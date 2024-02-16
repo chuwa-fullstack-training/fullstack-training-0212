@@ -4,15 +4,16 @@
 var x;
 
 if (x !== 3) {
-  console.log(y);
+  // y is var, is has be named at top level, but there is no value assigned
+  console.log(y); // undefined
   var y = 5;
   if (y === 5) {
     var x = 3;
   }
-  console.log(y);
+  console.log(y);// 5
 }
 if (x === 3) {
-  console.log(y);
+  console.log(y);// 5
 }
 
 
@@ -20,7 +21,7 @@ if (x === 3) {
 var x = 3;
 if (x === 3) {
   var x = 2;
-  console.log(x);
+  console.log(x);// 2
 }
-console.log(x);
+console.log(x);// 2
 
