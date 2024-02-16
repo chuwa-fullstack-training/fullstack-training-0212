@@ -8,6 +8,7 @@ function f() {
   }
   console.log(a);
 }
+//Answer: 7
 
 // 2. When executed, what value will be output?
 function f() {
@@ -16,6 +17,7 @@ function f() {
   }
   console.log(a);
 }
+//Answer: 5
 
 // 3. When executed, what value will be output?
 function f() {
@@ -23,6 +25,7 @@ function f() {
 }
 f();
 console.log(a);
+//Answer: 3, without using var,let, const, a will implicily been assigned as a global variable
 
 // 4.
 var a = 5;
@@ -35,6 +38,7 @@ function second() {
 }
 first();
 second();
+//Answer: 6
 
 // 5.
 var a = 5;
@@ -42,6 +46,7 @@ function f() {
   var a = 7;
   console.log(a);
 }
+//Answer: 7, function uses closest one when there are variables with idential names
 
 // 6.
 var a = 1;
@@ -52,3 +57,4 @@ function b() {
 }
 b();
 console.log(a);
+//Answer: 1, function b assgined 10 to the function a not var a

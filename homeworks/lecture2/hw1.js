@@ -1,3 +1,4 @@
+
 /*
 * Copy the enumerable properties of p to o, and return o.
 * If o and p have a property by the same name, o's property is overwritten.
@@ -5,6 +6,11 @@
 */
 function extend(o, p) {
     // implement your code here
+    for(const property in p)
+    {
+        o[property] = p[property];
+    }
+    return o    
 }
 
 /*
@@ -13,6 +19,16 @@ function extend(o, p) {
 */
 function union(o, p) {
     // implement your code here
+    var obj = {};
+    for(const property in p)
+    {
+        obj[property] = p[property];
+    }
+    for(const property in o)
+    {
+        obj[property] = o[property];
+    }
+    return obj
 }
 
 /*
@@ -21,6 +37,15 @@ function union(o, p) {
 */
 function restrict(o, p) {
     // implement your code here
+    for(const property in o)
+    {
+        if(!(property in p))
+        {
+            delete o[property]
+        }
+    }
+    
+    return o
 }
 
 /*
@@ -30,4 +55,70 @@ function restrict(o, p) {
 */
 function intersection(o, p) {
     // implement your code here
+    var obj = {};
+    for(const property in o)
+    {
+        if(property in p)
+        {
+            obj[property] = o[property]
+        }
+    }
+
+    return obj;
 }
+
+/*
+
+var a = {
+    name: "ling",
+    age: 3,
+    title: "student"
+}
+
+var b = {
+    name: "xiao",
+    age: 5,
+    address: "some street"
+}
+
+console.log(extend(a,b))
+a = {
+    name: "ling",
+    age: 3,
+    title: "student"
+}
+
+b = {
+    name: "xiao",
+    age: 5,
+    address: "some street"
+}
+
+console.log(union(a,b))
+var a = {
+    name: "ling",
+    age: 3,
+    title: "student"
+}
+
+var b = {
+    name: "xiao",
+    age: 5,
+    address: "some street"
+}
+
+console.log(restrict(a,b))
+var a = {
+    name: "ling",
+    age: 3,
+    title: "student"
+}
+
+var b = {
+    name: "xiao",
+    age: 5,
+    address: "some street"
+}
+
+console.log(intersection(a,b))
+*/
