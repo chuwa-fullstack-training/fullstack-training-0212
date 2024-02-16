@@ -5,6 +5,10 @@
 */
 function extend(o, p) {
     // implement your code here
+    for (let pro in p) {
+        o[pro] = p[pro];
+    }
+    return o;
 }
 
 /*
@@ -13,6 +17,10 @@ function extend(o, p) {
 */
 function union(o, p) {
     // implement your code here
+    let comb = {};
+    extend(comb, o);
+    extend(comb, p);    // p overwrites o
+    return comb;
 }
 
 /*
@@ -21,6 +29,12 @@ function union(o, p) {
 */
 function restrict(o, p) {
     // implement your code here
+    for (let pro in o) {
+        if (!(pro in p)) {
+            delete o[pro];
+        }
+    }
+    return o;
 }
 
 /*
@@ -30,4 +44,11 @@ function restrict(o, p) {
 */
 function intersection(o, p) {
     // implement your code here
+    let comb = {};
+    for (let pro in o) {
+        if (pro in p) {
+            comb[pro] = o[pro];
+        }
+    }
+    return comb;
 }
