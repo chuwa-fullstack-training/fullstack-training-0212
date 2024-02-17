@@ -33,8 +33,12 @@ function createCalculator() {
   };
 }
 
-var calculator1 = createCalculator();
+var calculator1 = createCalculator(); // 创建内存空间calculator1储存了result，更改内存空间中的result的值
 var calculator2 = createCalculator();
+
+createCalculator().add(5)//Output:5, 创建了一个新的calculator，新的result为0
+createCalculator().add(2)//Output:-2, 跟上面的内存空间不同，创建了新的calculator， 0-2 = -2
+
 
 calculator1.add(5); // Output: Added 5, result: 5
 calculator1.subtract(2); // Output: Subtracted 2, result: 3

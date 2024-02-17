@@ -50,3 +50,4 @@ const student = new Student('John Doe', 20, 'Computer Science');
 console.log(student.name); // Output: John Doe
 console.log(student.age); // Output: undefined
 console.log(student.getAge());
+console.log(student.major)
