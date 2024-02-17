@@ -8,7 +8,7 @@ function f() {
   }
   console.log(a);
 }
-
+7
 // 2. When executed, what value will be output?
 function f() {
   if (true) {
@@ -16,14 +16,14 @@ function f() {
   }
   console.log(a);
 }
-
+5
 // 3. When executed, what value will be output?
 function f() {
   a = 3;
 }
 f();
 console.log(a);
-
+3
 // 4.
 var a = 5;
 function first() {
@@ -35,14 +35,14 @@ function second() {
 }
 first();
 second();
-
+6
 // 5.
 var a = 5;
 function f() {
   var a = 7;
   console.log(a);
 }
-
+7
 // 6.
 var a = 1;
 function b() {
@@ -52,3 +52,4 @@ function b() {
 }
 b();
 console.log(a);
+10
