@@ -2,6 +2,17 @@
  * console.log(sum(2)(3) === 5)
  * console.log(sum(2, 3) === 5)
  */
-function sum() {
-    // implement here
+function sum(num1, num2) {
+  // implement here
+  if (arguments.length === 1) {
+    return function (num2) {
+      return num1 + num2;
+    };
+  }
+  return num1 + num2;
 }
+
+console.log(sum(2)(3));
+console.log(sum(2, 3));
+console.log(sum(2)(3) === 5);
+console.log(sum(2, 3) === 5);
