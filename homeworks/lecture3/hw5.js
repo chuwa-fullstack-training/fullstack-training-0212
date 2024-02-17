@@ -21,7 +21,7 @@ function User() {
 
     function setPassword(password) {
         if (m_password) {
-            throw new Error("Password is already set.");
+            throw new Error("Cannot reset password");
         }
         m_password = password;
     }

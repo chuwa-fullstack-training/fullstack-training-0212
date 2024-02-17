@@ -6,6 +6,7 @@ Shape.prototype.getType = function() {
     return this.type;
 }
 
+
 function Triangle(a, b, c) {
     this.type = 'triangle';
     this.a = a;
@@ -15,6 +16,36 @@ function Triangle(a, b, c) {
 
 Triangle.prototype = Object.create(Shape.prototype);
 Triangle.prototype.constructor = Triangle;
+
+Triangle.prototype.getPerimeter = function() {
+    // add three sides
+    return this.a + this.b + this.c;
+}
+
+Triangle.prototype.getArea = function() {
+    // Heron's formula
+    const s = this.getPerimeter() / 2;
+    return Math.sqrt(s * (s - this.a) * (s - this.b) * (s - this.c));
+}
+
+
+function Circle(radius) {
+    this.type = "circle";
+    this.radius = radius;
+}
+Circle.prototype = Object.create(Shape.prototype);
+Circle.prototype.constructor = Circle;
+
+Circle.prototype.getArea = function() {
+    // pi * radius ^ 2
+    return Math.PI * this.radius ** 2;
+}
+
+Circle.prototype.getCircumference = function() {
+    // 2 * pi * radius
+    return 2 * Math.PI * this.radius;
+}
+
 
 // your code goes here
 // 1. implement a method getPerimeter for Triangle class
@@ -46,11 +77,12 @@ class Triangle extends Shape {
     }
 
     getPerimeter() {
-        // add three edges
+        // add three sides
         return this.a + this.b + this.c;
     }
 
     getArea() {
+        // Heron's formula
         const s = this.getPerimeter() / 2;
         return Math.sqrt(s * (s - this.a) * (s - this.b) * (s - this.c));
     }
@@ -63,12 +95,12 @@ class Circle extends Shape {
         this.radius = radius;
     }
 
-    area() {
+    getArea() {
         // pi * radius ^ 2
         return Math.PI * this.radius ** 2;
     }
 
-    circumference() {
+    getCircumference() {
         // 2 * pi * radius
         return 2 * Math.PI * this.radius;
     }
