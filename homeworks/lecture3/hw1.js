@@ -11,7 +11,7 @@ function pickCoins() {
       for (let k = 0; k <= 9; k++) {
         for (let l = 0; l <= 1; l++) {
           if (i + 5 * j + 25 * k + 50 * l === 100 && i + j + k + l === 48) {
-            result.push([i, j, k, l]);
+            result.push({ "1c": i, "5c": j, "25c": k, "50c": l });
             if (result.length === 2) {
               return result;
             }
