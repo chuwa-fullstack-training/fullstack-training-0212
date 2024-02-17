@@ -13,4 +13,30 @@
  */
 function User() {
     // implement here
+    var m_password;
+
+    function checkPassword(password) {
+        return m_password == password;
+    }
+
+    function setPassword(password) {
+        if (m_password) {
+            throw new Error("Password is already set.");
+        }
+        m_password = password;
+    }
+    
+    return {
+        checkPassword: checkPassword,
+        setPassword: setPassword,
+    };
 }
+
+const user = new User();
+user.setPassword('123456');
+user.checkPassword('123456'); // true
+user.checkPassword('123'); // false
+user.password; // undefined
+user.setPassword('123'); // Error
+user.checkPassword('123'); // false
+user.password; // undefined

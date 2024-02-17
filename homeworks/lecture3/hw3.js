@@ -1,5 +1,12 @@
 function counter() {
     // implement here
+    let res = 0;
+    return (num) => {
+        if (num) {
+            res += num;
+        }
+        return res;
+    }
 }
 
 let count = counter();

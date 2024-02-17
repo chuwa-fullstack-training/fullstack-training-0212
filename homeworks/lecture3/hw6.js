@@ -18,7 +18,17 @@
  * 1 <= nums[i] <= 100
  */
 function numIdenticalPairs(nums) {
-  // implement here
+  let res = 0;
+  const dict = {}
+  for (let i = 0; i < nums.length; i++) {
+    if (dict.hasOwnProperty(nums[i])) {
+      res += dict[nums[i]];
+      dict[nums[i]]++;
+    } else {
+      dict[nums[i]] = 1
+    }
+  }
+  return res;
 }
 
 /**
@@ -26,4 +36,11 @@ function numIdenticalPairs(nums) {
  */
 function removeVowels(s) {
   // implement here
+  let res = [];
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] != 'a' && s[i] != 'e' && s[i] != 'i' && s[i] != 'e' && s[i] != 'o') {
+      res.push(s[i]);
+    }
+  }
+  return res.join("");
 }
