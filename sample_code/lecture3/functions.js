@@ -8,7 +8,7 @@ function add(a, b) {
   return a + b;
 }
 
-let sum = add;
+let sum = add; // get the function address
 console.log(sum(3, 5)); // Outputs: 8
 
 let greet = function (name) {

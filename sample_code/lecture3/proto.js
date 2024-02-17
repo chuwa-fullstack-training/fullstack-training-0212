@@ -30,7 +30,7 @@ dogs[0].sayMyName(); // My name is dog0
 // improvement
 function Dog(name, age) {
   const dog = {};
-  dog.__proto__ = Dog.prototype;
+  dog.__proto__ = Dog.prototype; // inherit // public function storage
   dog.name = name;
   dog.age = age;
 

@@ -1,12 +1,12 @@
 /**
  * function arguments
  */
-// function foo(a, b, c) {
-//   console.log(a, b, c);
-//   console.log(arguments);
-//   console.log(arguments.length);
-// }
-// foo(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+function foo(a, b, c) {
+  console.log(a, b, c);
+  console.log(arguments);
+  console.log(arguments.length);
+}
+foo(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 
 function bar(a, b, c) {
   console.log(a, b, c);
@@ -14,10 +14,10 @@ function bar(a, b, c) {
 }
 bar(1);
 
-// function rest(a, b, ...args) {
-//   console.log(args);
-// }
-// rest(1, 2, 3, 4, 5);
+function rest(a, b, ...args) {
+  console.log(args);
+}
+rest(1, 2, 3, 4, 5);
 
 function defaultArgs(a = 1, b = 2, c, d, e, f) {
   console.log('a =', a, 'b =', b);
@@ -33,3 +33,13 @@ function test(a, b, options = {}) {
 test({ id: 1, name: 'aaron' });
 test({ name: 'aaron', id: '2' });
 test();
+
+
+
+
+handleUser(); // might have error when putting wrong value in wrong argument
+// if the arguments amount more than 3, suggest you use object
+function handleUser(user = {}){
+  // logic
+  console.log(user.id + user.name);
+}

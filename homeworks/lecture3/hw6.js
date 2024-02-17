@@ -19,11 +19,27 @@
  */
 function numIdenticalPairs(nums) {
   // implement here
+  let dp = [];
+  let sum = 0;
+  for(let i = 0;i < nums.length;i++){
+    if(dp[nums[i]] > 0) sum += dp[nums[i]];
+    if(!dp[nums[i]]) dp[nums[i]] = 1;
+    else dp[nums[i]] += 1;
+  }
+  return sum;
 }
+
 
 /**
  * Given a string s, remove the vowels 'a', 'e', 'i', 'o', and 'u' from it, and return the new string.
  */
 function removeVowels(s) {
   // implement here
+  const vowels = 'aeiou';
+  let res = '';
+  for(let i = 0;i < s.length;i++){
+    if(vowels.indexOf(s[i]) === -1) res += s[i];
+  }
+  return res;
 }
+
