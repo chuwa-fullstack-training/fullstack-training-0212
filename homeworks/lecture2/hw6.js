@@ -26,5 +26,12 @@ function reverseList(list) {
 // 3. Write a function that checks whether an element occurs at least twice in a list.
 function checkTwice(list, element) {
     // implement your code here
-    
+    var times=0;
+    for(let el of list){
+        if(el===element){
+            times++;
+        }
+    }
+    if(times>=2) return true;
+    return false;
 }
