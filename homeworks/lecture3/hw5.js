@@ -28,7 +28,7 @@ function User() {
         return input === password;
     }
     return {
-        setPassword: setPassword,
-        checkPassword: checkPassword
+        setPassword,
+        checkPassword
     }
 }
