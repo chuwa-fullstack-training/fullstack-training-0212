@@ -13,4 +13,23 @@
  */
 function User() {
     // implement here
+    let password;
+
+    function setPassword(input) {
+        if (!password) {
+            password = input;
+        } else {
+            throw new Error('Error');
+        }
+    }
+
+    function checkPassword(input) {
+        console.log(input === password)
+        return input === password;
+    }
+    return {
+        password: password,
+        setPassword: setPassword,
+        checkPassword: checkPassword
+    }
 }
