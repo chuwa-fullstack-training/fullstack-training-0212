@@ -1,5 +1,14 @@
 function counter() {
     // implement here
+    var res = 0;
+    
+    function add(num) {
+        if (arguments.length == 1) {
+            res += num;
+        } 
+        return res
+    }
+    return add;
 }
 
 let count = counter();
