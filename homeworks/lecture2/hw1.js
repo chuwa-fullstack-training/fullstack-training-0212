@@ -4,7 +4,7 @@
 * This function does not handle getters and setters or copy attributes.
 */
 function extend(o, p) {
-    // implement your code here
+    return Object.assign(o, p);
 }
 
 /*
@@ -12,7 +12,7 @@ function extend(o, p) {
 * If o and p have properties by the same name, the values from o are used.
 */
 function union(o, p) {
-    // implement your code here
+    return Object.assign({}, p, o);
 }
 
 /*
@@ -20,7 +20,12 @@ function union(o, p) {
 * Return o.
 */
 function restrict(o, p) {
-    // implement your code here
+    for(var i in o) {
+        if(!(i in p)) {
+            delete o[i];
+        }
+    }
+    return o;
 }
 
 /*
@@ -29,5 +34,11 @@ function restrict(o, p) {
 * the properties in p are discarded
 */
 function intersection(o, p) {
-    // implement your code here
+    var ans= {} ;
+    for(var i in o) {
+        if(i in p) {
+            ans[i] = o[i];
+        }
+    }
+    return ans;
 }
