@@ -6,7 +6,7 @@
 
 // Actually 3 solutions?
 
-const res = []
+const res = [];
 
 function backtrack(vec, path, curr_sum, start) {
     if (curr_sum > 100) {
@@ -14,22 +14,22 @@ function backtrack(vec, path, curr_sum, start) {
     }
     if (path.length == 48) {
         if (curr_sum == 100) {
-            res.push(path.slice())
+            res.push(path.slice());
         }
         return;
     }
     for (let i = start; i < vec.length; i++) {
-        path.push(vec[i])
-        backtrack(vec, path, curr_sum + vec[i], i)
-        path.pop()
+        path.push(vec[i]);
+        backtrack(vec, path, curr_sum + vec[i], i);
+        path.pop();
     }
 }
 
 function pickCoins() {
-    let vec = [1, 5, 25, 50]
-    let path = []
-    backtrack(vec, path, 0, 0)
-    return res
+    let vec = [1, 5, 25, 50];
+    let path = [];
+    backtrack(vec, path, 0, 0);
+    return res;
 }
 
-console.log(pickCoins())
+console.log(pickCoins());

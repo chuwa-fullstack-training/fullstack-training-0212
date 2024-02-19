@@ -7,7 +7,7 @@ function sum() {
         return arguments[0] + arguments[1];
     } else {
         return (y) => {
-            var x = arguments[0]
+            var x = arguments[0];
             return x + y;
         }
     }

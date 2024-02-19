@@ -19,13 +19,13 @@
  */
 function numIdenticalPairs(nums) {
   let res = 0;
-  const dict = {}
+  const dict = {};
   for (let i = 0; i < nums.length; i++) {
     if (dict.hasOwnProperty(nums[i])) {
       res += dict[nums[i]];
       dict[nums[i]]++;
     } else {
-      dict[nums[i]] = 1
+      dict[nums[i]] = 1;
     }
   }
   return res;
