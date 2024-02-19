@@ -4,7 +4,12 @@
 * This function does not handle getters and setters or copy attributes.
 */
 function extend(o, p) {
-    // implement your code here
+    for(var prop in p){ // Iterate over all properties in p
+        if(p.hasOwnProperty(prop)){ // Check if p has the property (not from the prototype chain)
+            o[prop] = p[prop]; // Copy or overwrite the property into o
+        }
+    }
+    return o; // Return the modified object o
 }
 
 /*
@@ -12,7 +17,20 @@ function extend(o, p) {
 * If o and p have properties by the same name, the values from o are used.
 */
 function union(o, p) {
-    // implement your code here
+    var result = {}; // create a new empty object
+    for(var prop in p){
+        if(p.hasOwnProperty(prop)){
+            result[prop] = p[prop]; // copy all the props in p and save it to result
+        }
+    }
+
+    for(var prop in o){
+        if(o.hasOwnProperty(prop)){
+            result[prop] = o[prop]; // copy all the props in o and save it to result and overwrite the same props if existed in p
+        }
+    }
+
+    return o;
 }
 
 /*
@@ -20,7 +38,15 @@ function union(o, p) {
 * Return o.
 */
 function restrict(o, p) {
-    // implement your code here
+    for(var prop in o){ // iterate all the props in o
+        if(o.hasOwnProperty(prop)){  // check if there is a valid prop in o directly
+            if(!p.hasOwnProperty(prop)){ // check if this prop exists in p
+                delete o[prop]; // if not, delete this prop in o
+            }
+        }
+    }
+
+    return o;
 }
 
 /*
@@ -29,5 +55,12 @@ function restrict(o, p) {
 * the properties in p are discarded
 */
 function intersection(o, p) {
-    // implement your code here
+    var result = {};
+    for(var prop in o){ // iterate all the props in o
+        if(o.hasOwnProperty(prop) && p.hasOwnProperty(prop)){ // check if the value of this prop also exists in p
+            result[prop] = o[prop]; // copy the value of prop from o into the new object
+        }
+    }
+
+    return result;
 }
