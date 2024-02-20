@@ -3,5 +3,11 @@
  * console.log(sum(2, 3) === 5)
  */
 function sum() {
-    // implement here
+    if (b != undefined) {
+        return a + b;
+    } else {
+        return function (b) {
+            return a + b;
+        }
+    }
 }

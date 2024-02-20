@@ -1,5 +1,11 @@
 function counter() {
-    // implement here
+    let total = 0;
+    return function (...nums) {
+        if (nums.length > 0) {
+            total += nums.reduce((cur_total, num) => cur_total + num, 0);
+        }
+        return total;
+    }
 }
 
 let count = counter();
