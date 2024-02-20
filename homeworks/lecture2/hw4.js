@@ -19,7 +19,7 @@ function f() {
     console.log(a);
   }
 
-  // ans: 5
+  // ans:5
   
   // 3. When executed, what value will be output?
   function f() {
@@ -50,7 +50,7 @@ function f() {
     var a = 7;
     console.log(a);
   }
-  // ans : 7
+  // ans： null
   
   // 6.
   var a = 1;
@@ -61,4 +61,4 @@ function f() {
   }
   b();
   console.log(a);
-  //ans :  10
+  //ans :  1
