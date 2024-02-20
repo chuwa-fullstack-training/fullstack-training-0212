@@ -1,7 +1,7 @@
 // Map
 const numbers = [1, 2, 3, 4, 5];
 const doubledNumbers = numbers.map(function (value, index, array) {
-  return num * 2;
+  return value * 2;
 });
 // numbers.forEach(function (value, index, array) {})
 
@@ -14,8 +14,8 @@ console.log(evenNumbers); // Output: [2, 4]
 
 // Reduce
 const initialValue = 0;
-const sum = numbers.reduce(function (accumulator, currenctVal, index, array) {
-  return accumulator + currenctVal;
+const sum = numbers.reduce(function (accumulator, currentVal, index, array) {
+  return accumulator + currentVal;
 }, initialValue);
 
 console.log(sum); // Output: 15
@@ -38,7 +38,7 @@ const groupByCountry = employees.reduce((group, employee) => {
   if (!group[employee.country]) {
     group[employee.country] = [];
   }
-  group[employee.country].push(employee);
+  group[employee.country].push({ name: employee.name });
   return group;
 }, {});
 

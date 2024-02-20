@@ -14,8 +14,8 @@ function curry(func) {
   };
 }
 
-const logTS = curry(log)(new Date().toISOString());
-logTS('DEBUG', 'Hello World');
+const logTS = curry(log)(new Date().toISOString()); // fix the first argument
+logTS('DEBUG', 'Hello World'); // equivalent to call curry(new Date().toISOString(), 'DEBUG', 'Hello World')
 const warnNow = logTS('WARN');
 warnNow('Hello World');
 

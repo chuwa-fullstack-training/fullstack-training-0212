@@ -12,4 +12,8 @@ function restFn(x, y, ...rest) {
   return x + y + rest;
 }
 
-console.log(restFn(1, 2, 3, 4, 5)); // ??
+console.log(restFn(1, 2, 3, 4, 5));
+// one operand is a number and the other is an array, 
+// JS converts array to a string by concatenating its elements with commas
+// console.log(3 + [3, 4, 5])
+// "33, 4, 5"

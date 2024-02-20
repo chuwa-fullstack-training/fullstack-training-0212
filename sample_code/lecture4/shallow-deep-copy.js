@@ -38,7 +38,7 @@ const comprehensiveData = {
   ])
 };
 
-console.log(JSON.parse(JSON.stringify(comprehensiveData)));
+console.log(JSON.parse(JSON.stringify(comprehensiveData))); // Fail
 
 const data = {
   name: 'foo',
