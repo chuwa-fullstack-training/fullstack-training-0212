@@ -1,5 +1,6 @@
 // What would be the output of following code?
 // Explain your answer.
+// test2
 
 console.log(0.1 + 0.2);
 
