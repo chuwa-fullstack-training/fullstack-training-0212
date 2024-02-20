@@ -15,3 +15,17 @@
  * const arr = [[0, 1], [2, 3], [4, [5, 6]]];
  * Expected output: [0, 1, 2, 3, 4, 5, 6]
  */
+let double = (arr) => arr.map((value, index, array) => value * 2);
+let even = (arr) => arr.filter((value, index, array) => value % 2 === 0);
+let reverse = (str) =>
+  str.reduce((acc, value, index, array) => value + acc, "");
+
+function flatten(arr) {
+  return arr.reduce((acc, value, index, array) => {
+    if (Array.isArray(value)) {
+      return acc.concat(flatten(value));
+    } else {
+      return acc.concat(value);
+    }
+  }, []);
+}
