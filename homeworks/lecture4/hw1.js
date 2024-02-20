@@ -18,16 +18,19 @@ function checkValidHTML(html) {
         right++;
     }
 
-    if (arr.length % 2 != 0) { return false; }
-    left = 0, right = arr.length - 1;
-    while (left < right) {
-        if (arr[right].length <= 1) {
-            return false;
+    const stack = [];
+    for (let tag of arr) {
+        if (tag[0] !== '/') {
+            stack.push(tag);
+        } else {
+            if (stack.length == 0) {
+                return false;
+            }
+            let top = stack.pop();
+            if (top !== tag.substring(1)) {
+                return false;
+            }
         }
-        if (arr[left] !== arr[right].substring(1)) {
-            return false;
-        }
-        left++, right--;
     }
     return true;
 }
