@@ -3,8 +3,14 @@
 * If o and p have a property by the same name, o's property is overwritten.
 * This function does not handle getters and setters or copy attributes.
 */
+
 function extend(o, p) {
     // implement your code here
+    for(var prop in p){
+        o[prop] = p[prop];
+    }
+
+    return o;
 }
 
 /*
@@ -13,6 +19,8 @@ function extend(o, p) {
 */
 function union(o, p) {
     // implement your code here
+    let res = {...p, ...o};
+    return res;
 }
 
 /*
@@ -21,6 +29,13 @@ function union(o, p) {
 */
 function restrict(o, p) {
     // implement your code here
+    for(let prop in o){
+        if(!p.hasOwnProperty(prop)){
+            delete o[prop];
+        }
+    }
+
+    return o;
 }
 
 /*
@@ -30,4 +45,12 @@ function restrict(o, p) {
 */
 function intersection(o, p) {
     // implement your code here
+    let res = {};
+    for(let prop in o){
+        if(p.hasOwnProperty(prop)){
+            res[prop] = o[prop];
+        }
+    }
+
+    return res;
 }

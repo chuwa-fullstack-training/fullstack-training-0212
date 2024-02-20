@@ -8,6 +8,7 @@ function f() {
   }
   console.log(a);
 }
+// 7
 
 // 2. When executed, what value will be output?
 function f() {
@@ -16,6 +17,8 @@ function f() {
   }
   console.log(a);
 }
+// 5
+// var is funtion scope
 
 // 3. When executed, what value will be output?
 function f() {
@@ -23,6 +26,8 @@ function f() {
 }
 f();
 console.log(a);
+//3
+// here, a is a global variable.
 
 // 4.
 var a = 5;
@@ -35,6 +40,7 @@ function second() {
 }
 first();
 second();
+// 6
 
 // 5.
 var a = 5;
@@ -42,6 +48,8 @@ function f() {
   var a = 7;
   console.log(a);
 }
+// 7
+// it outputs the var a = 7; this a.
 
 // 6.
 var a = 1;
@@ -52,3 +60,5 @@ function b() {
 }
 b();
 console.log(a);
+// 1
+// inside b(), a() function is hoisted to the top, so a = 10; here a is a function, not the global var a.
