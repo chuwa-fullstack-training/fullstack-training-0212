@@ -19,6 +19,22 @@
  */
 function numIdenticalPairs(nums) {
   // implement here
+  var map = {}
+  var count = 0;
+
+  for (const num of nums)
+  {
+    if((num in map))
+    {
+      count += map[num]
+      map[num] += 1;
+    }
+    else
+    {
+      map[num] = 1;
+    }
+  }
+  return count;
 }
 
 /**
@@ -26,4 +42,12 @@ function numIdenticalPairs(nums) {
  */
 function removeVowels(s) {
   // implement here
+  s = s.replace(/[aeiou]/g, "");
+  return s
 }
+
+/*Test cases */
+console.log(numIdenticalPairs([1,1,1,1]))
+console.log(numIdenticalPairs([1,2,3,1,1,3]))
+console.log(numIdenticalPairs([1,2,3]))
+console.log(removeVowels("ahahahooo"))
