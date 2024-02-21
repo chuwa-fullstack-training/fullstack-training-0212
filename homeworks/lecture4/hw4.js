@@ -1,5 +1,3 @@
-/**
- * Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must be unique and you may return the result in any order.
  *
  * Example 1:
  * Input: nums1 = [1,2,2,1], nums2 = [2,2]
@@ -12,4 +10,11 @@
  */
 const intersection = (nums1, nums2) => {
   // Your solution here
+  let res = new Set();
+  nums1.forEach(i => {
+    if (nums2.includes(i)) {
+      res.add(i)
+    }
+  });
+  return Array.from(res);
 };
