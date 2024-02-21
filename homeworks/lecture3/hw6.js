@@ -19,6 +19,17 @@
  */
 function numIdenticalPairs(nums) {
   // implement here
+  let freq= new Map();
+  let ans=0;
+  for(let num of nums){
+    if(freq.has(num)){
+      ans+=freq.get(num);// every new one means new freq pairs
+      freq.set(num,freq.get(num)+1);
+    }else{
+      freq.set(num,1);
+    }
+  }
+  return ans;
 }
 
 /**
@@ -26,4 +37,5 @@ function numIdenticalPairs(nums) {
  */
 function removeVowels(s) {
   // implement here
+  return s.replace(/[aeiou]/gi, ''); 
 }
