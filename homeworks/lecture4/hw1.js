@@ -3,8 +3,10 @@
 // Example:
 // <html><head><title>My Title</title></head></html> - true
 // <html><head><title>My Title</title></head></head></html> - false
-// <html><head><title>My Title</title></head></html - true
+// <html><head><title>My Title</title></head></html> - true
 
 function checkValidHTML(html) {
     // implement your solution here
+    let stack = [];
+    
 }

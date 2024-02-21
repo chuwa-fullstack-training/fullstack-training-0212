@@ -25,6 +25,10 @@ let person = {
 };
 
 person.greet(); // Outputs: Hello, Aaron!
+let p1 = {
+  name: 'Alex'
+}
+person.greet.call(p1); // call强制绑定this argument，显式绑定this为p1
 
 /**
  * `this` context
@@ -62,6 +66,7 @@ greet.call(person2, 'Hi'); // Outputs: Hi, Alex Chen
 function getMaxOfArray(numArray) {
   return Math.max.apply(null, numArray);
 }
+// Math.max(1, 2, 3); has to pass in all single values
 
 getMaxOfArray([1, 2, 3]); // Outputs: 3
 

@@ -15,7 +15,7 @@ function curry(func) {
 }
 
 const logTS = curry(log)(new Date().toISOString());
-logTS('DEBUG', 'Hello World');
+logTS('DEBUG', 'Hello World'); // --> log(newD Date().toISOSTring(), 'DEGUG', 'Hello World')
 const warnNow = logTS('WARN');
 warnNow('Hello World');
 

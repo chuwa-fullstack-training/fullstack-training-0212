@@ -3,7 +3,7 @@
  */
 // Namespace function for utilities
 var Utils = (function () {
-  // Private variable
+  // 这样子count被作为Private variable保护起来
   var count = 0;
 
   // Private function
@@ -22,6 +22,9 @@ var Utils = (function () {
     getCount: getCount
   };
 })();
+
+// 与下面对比
+// var util1 = Utils(...);
 
 // Using the namespace functions
 Utils.incrementCount();

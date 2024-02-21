@@ -1,5 +1,15 @@
 function counter() {
     // implement here
+    let sum = 0;
+    for(let arg of arguments) {
+        sum += arg;
+    }
+    return function() {
+        for(let num of arguments) {
+            sum += num;
+        }
+        return sum;
+    }
 }
 
 let count = counter();

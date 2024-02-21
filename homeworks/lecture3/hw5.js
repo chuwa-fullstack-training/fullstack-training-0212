@@ -13,4 +13,31 @@
  */
 function User() {
     // implement here
+    var password = undefined;
+    function setPassword(input) {
+        if(password === undefined) {
+            password = input;
+        } else {
+            throw new Error();
+        }
+    }
+    function checkPassword(input) {
+        if(input === password) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    return {
+        setPassword: setPassword,
+        checkPassword: checkPassword
+    };
 }
+let user = new User();
+user.setPassword("123456");
+console.log(user.checkPassword("123456"));
+console.log(user.checkPassword("123"));
+console.log(user.password);
+// user.setPassword("123");
+console.log(user.checkPassword("123"));
+console.log(user.password);

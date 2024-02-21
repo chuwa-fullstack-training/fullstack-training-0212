@@ -39,6 +39,9 @@ var calculator2 = createCalculator();
 calculator1.add(5); // Output: Added 5, result: 5
 calculator1.subtract(2); // Output: Subtracted 2, result: 3
 calculator1.multiply(4); // Output: Multiplied by 4, result: 12
+// 上面是closure，与下面对比
+createCalculator().add(5);
+createCalculator().subtract(2);
 
 console.log(calculator1.getResult()); // Output: 12
 console.log(calculator2.getResult()); // Output: 0

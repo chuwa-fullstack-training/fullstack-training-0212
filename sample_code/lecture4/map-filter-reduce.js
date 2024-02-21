@@ -38,7 +38,7 @@ const groupByCountry = employees.reduce((group, employee) => {
   if (!group[employee.country]) {
     group[employee.country] = [];
   }
-  group[employee.country].push(employee);
+  group[employee.country].push(employee);//push({name: employee.name})
   return group;
 }, {});
 

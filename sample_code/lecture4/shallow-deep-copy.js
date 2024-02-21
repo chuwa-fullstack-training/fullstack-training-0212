@@ -8,14 +8,14 @@ const shallowCopy = originalData;
 shallowCopy.a = '456';
 console.log(originalData.a);
 
-const deepCopy = JSON.parse(JSON.stringify(originalData));
+const deepCopy = JSON.parse(JSON.stringify(originalData));//老方法做deepcopy
 // const deepCopy = { ...originalData }; // Object.assign({}, originalData);
 deepCopy.a = '789';
 console.log(originalData.a);
 
-originalData.c = [1, 2, 3];
-const deepCopy2 = JSON.parse(JSON.stringify(originalData));
-// const deepCopy2 = { ...originalData };
+originalData.c = [1, 2, 3];//complex type ->array
+const deepCopy2 = JSON.parse(JSON.stringify(originalData));//still works,array will be stringify
+// const deepCopy2 = { ...originalData };//won't work
 deepCopy2.c.push(4);
 console.log(originalData.c, deepCopy2.c);
 
