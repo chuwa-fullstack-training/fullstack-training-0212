@@ -1,5 +1,13 @@
 function counter() {
     // implement here
+    var cur = 0;
+ 
+    return function(b) {
+        if (arguments.length === 1) {
+            cur += b;
+        }
+        return cur;
+    }
 }
 
 let count = counter();

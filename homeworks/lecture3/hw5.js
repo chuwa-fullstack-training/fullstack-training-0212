@@ -13,4 +13,17 @@
  */
 function User() {
     // implement here
+    let password;
+    return {
+        setPassword: function(newPassword){
+            if (typeof newPassword === 'string') {
+                password = newPassword
+            } else {
+                throw new error('Password must be a string');
+            }
+        },
+        checkPassword: function(input) {
+            return input === password;
+        }
+    };
 }
