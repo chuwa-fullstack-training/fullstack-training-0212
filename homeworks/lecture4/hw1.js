@@ -8,7 +8,7 @@
 function checkValidHTML(html) {
     // implement your solution here
     const tagStack = [];
-    const tagRegex = /<(\/?[a-zA-Z][^\s>]*)/g;
+    const tagRegex = /<(\/?[a-zA-Z][^\s>]*)>/g;
     let match;
 
     while ((match = tagRegex.exec(html)) !== null) {
