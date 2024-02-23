@@ -17,6 +17,7 @@ Promise.resolve().then(() => console.log('3'));
 new Promise((resolve, reject) => {
   console.log('4');
   resolve('5');
+
 }).then(data => console.log(data));
 
 console.log('End');
