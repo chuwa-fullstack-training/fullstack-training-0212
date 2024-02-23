@@ -5,20 +5,56 @@
  * @returns {any[]} - an array of responses
  */
 function sequencePromise(urls) {
-  const results = [];
+  let results = [];
   function fetchOne(url) {
     // for `getJSON` function you can choose either from the implementation of hw5 or `fetch` version provided by browser
     // if you use `fetch`, you have to use browser console to test this homework
     return getJSON(url).then(response => results.push(response));
   }
   // implement your code here
-
+  const initialPromise = Promise.resolve([]);
+  function listPromises(promiseChain, currentUrl) {
+    return promiseChain.then(chainResults =>
+      getJSON(currentUrl).then(currentResult => [...chainResults, currentResult])
+    );
+  }
+  results = urls.reduce(listPromises, initialPromise);
   return results;
 }
 
 // option 1
 function getJSON(url) {
-  // this is from hw5
+  // implement your code here
+  return new Promise((resolve, reject)=>{
+    const options = {
+      headers: {
+        'User-Agent': 'request'
+      }
+    };
+    const request = https.get(url, options, response => {
+      if (response.statusCode !== 200) {
+        reject(new Error(`Did not get an OK from the server. Code: ${response.statusCode}`));
+        response.resume();
+      }
+  
+      let data = '';
+      response.on('data', chunk => {
+        data += chunk;
+      });
+      response.on('end', () => {
+        try {
+          // When the response body is complete, we can parse it and log it to the console
+         resolve(JSON.parse(data));
+        } catch (e) {
+          // If there is an error parsing JSON, log it to the console and throw the error
+          reject(new Error(e.message));
+        }
+      });
+    });
+    request.on('error', err => {
+      reject(`Encountered an error trying to make a request: ${err.message}`);
+    });
+  })
 }
 
 // option 2

@@ -1,6 +1,7 @@
 // what is the output? and explain why?
 
 // 1
+// 1, catch and the afterwards won't be called
 Promise.resolve(1)
   .then(res => {
     console.log(res);
@@ -14,6 +15,8 @@ Promise.resolve(1)
   });
 
 // // 2
+// 1 > 3
+// the first then will be skipped because of the reject
 Promise.reject(1)
   .then(res => {
     console.log(res);
@@ -28,6 +31,8 @@ Promise.reject(1)
   });
 
 //3
+// Error: 2
+// Promise.all will wait for all done or one of them reject, the first reject will happen at 2 second
 function runAsync(x) {
   const p = new Promise(resolve =>
     setTimeout(() => resolve(x), 1000)
