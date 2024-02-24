@@ -8,13 +8,21 @@
  */
 
 // your code here
-function Singleton() {
-    if (!Singleton.instance) {
-        Singleton.instance = this;   
+var Singleton = (function() {
+    let instance;
+    function createInstance() {
+        return new Object();
     }
-    return Singleton.instance;
-}
+    return {
+        getInstance: function() {     // key-val pair
+            if (!instance) {
+                instance = createInstance();
+            }
+            return instance;
+        }
+    }
+})();
 
-const instance1 = new Singleton();
-const instance2 = new Singleton();
+const instance1 = Singleton.getInstance();
+const instance2 = Singleton.getInstance();
 console.log(instance1 === instance2); // Output: true
