@@ -15,6 +15,13 @@
  */
 function debounce(func, delay) {
   // your code here
+  let timeId;
+  return function(){
+    if(timeId) clearTimeout(timeId);
+    timeId = setTimeout(()=>{
+      func.apply(this);
+    },delay);
+  }
 }
 
 /**
@@ -34,4 +41,14 @@ function debounce(func, delay) {
  */
 function throttle(func, delay) {
   // your code here
+  let flag = false;
+  return function(){
+    if(!flag){
+      flag = true;
+      setTimeout(()=>{
+        func.apply(this);
+        flag = false;
+      },delay);
+    }
+  }
 }
