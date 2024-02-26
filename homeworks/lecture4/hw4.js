@@ -12,4 +12,18 @@
  */
 const intersection = (nums1, nums2) => {
   // Your solution here
+  let numSet= new Set();
+  for(let a of nums1){
+    numSet.add(a);
+  }
+  let ans=[];
+  let numSet2= new Set();
+  for(let b of nums2){
+    if(numSet.has(b)&&!numSet2.has(b)){
+      ans.push(b);
+      numSet2.add(b);
+
+    }
+  }
+  return ans;
 };

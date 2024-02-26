@@ -8,3 +8,21 @@
  */
 
 // your code here
+//ES5 
+
+function Singleton(){
+    if(Singleton.instance===undefined){
+        Singleton.instance=this;
+    }
+    return Singleton.instance;
+}
+// ES6
+class Singleton{
+    constructor(){
+        if(!Singleton.instance){
+            Singleton.instance=this;
+        }
+        return Singleton.instance;
+    }
+    
+}
