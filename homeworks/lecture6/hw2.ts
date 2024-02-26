@@ -28,10 +28,10 @@ const persons: Person[] = [
 // fix the error showing in the following code:
 function logPerson(person: Person) {
   let additionalInformation: string;
-  if (person.role) {
-    additionalInformation = person.role;
+  if ("role" in person) {
+    additionalInformation = (person as Admin).role;
   } else {
-    additionalInformation = person.occupation;
+    additionalInformation = (person as User).occupation;
   }
   console.log(` - ${person.name}, ${person.age}, ${additionalInformation}`);
 }
