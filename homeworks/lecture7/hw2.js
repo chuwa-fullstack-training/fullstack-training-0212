@@ -19,3 +19,33 @@
  */
 
 // your code here
+const http = require('http');
+const url = require('url');
+
+const server = http.createServer((req,res)=>{
+    const parseUrl = url.parse(req.url,true);
+    const path = parseUrl.pathname;
+    const time = parseUrl.query.iso;
+
+    const date = new Date(time);
+    if(path === '/api/parsetime'){
+        const newTime = {
+            hour : date.getHours(),
+            minute : date.getMinutes(),
+            second : date.getSeconds()
+        };
+        res.writeHead(200,{ contentType: 'application/json' });
+        res.end(JSON.stringify(newTime));
+    }else if(path === '/api/unixtime'){
+        const unixTime = {
+            unixtime : date.getTime()
+        }
+        res.writeHead(200,{ contentType: 'application/json' });
+        res.end(JSON.stringify(newTime));
+    }else{
+        res.writeHead(404,{ contentType: 'application/json' });
+        res.end('No Found');
+    }
+});
+
+server.listen(3000);

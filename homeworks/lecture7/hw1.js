@@ -14,3 +14,24 @@
  */
 
 // your code here
+const fs = require('fs');
+const path = require('path');
+
+const directory = process.argv[2];
+const extensionFilter = process.argv[3];
+
+fs.readdir(directory, (err, files) => {
+    if (err) {
+      console.error('Error reading directory:', err);
+      return;
+    }
+  
+    const filteredFiles = files.filter(file => {
+      const ext = path.extname(file).slice(1); // Remove the dot from the extension
+      return ext === extensionFilter;
+    });
+  
+    filteredFiles.forEach(file => {
+      console.log(file);
+    });
+  });
