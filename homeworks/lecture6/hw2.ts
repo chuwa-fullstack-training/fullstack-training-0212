@@ -48,6 +48,6 @@ function logPerson(person: Person) {
   }
   console.log(` - ${person.name}, ${person.age}, ${additionalInformation}`);
 }
-//since the TS can't tell person is Admin or User type, if viewesd as Admin, it
-//doesn't have property role. We can use type guard with 'in' to test whether it
+//since the TS can't tell person is Admin or User type, if viewed as Admin, it
+//doesn't have property 'role'. We can use type guard with 'in' to test whether it
 //has a property 'role'
