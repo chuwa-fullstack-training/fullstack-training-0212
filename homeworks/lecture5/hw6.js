@@ -12,13 +12,53 @@ function sequencePromise(urls) {
     return getJSON(url).then(response => results.push(response));
   }
   // implement your code here
+  const chain = urls.reduce((acc, cur) => {
+    return acc.then(() => fetchOne(cur))
+  }, Promise.resolve());
 
-  return results;
+  return chain.then(() => results);
 }
 
 // option 1
+const https = require('https');
 function getJSON(url) {
   // this is from hw5
+  return new Promise((resolve, reject) => {
+    const options = {
+      headers: {
+        'User-Agent': 'request'
+      }
+    };
+    const request = https.get(url, options, response => {
+      if (response.statusCode !== 200) { 
+        reject(
+          `Did not get an OK from the server. Code: ${response.statusCode}`
+        );
+        response.resume();
+      }
+  
+      let data = '';
+      response.on('data', chunk => {
+        data += chunk;
+      });
+      response.on('end', () => { 
+        try {
+          // When the response body is complete, we can parse it and log it to the console
+          console.log(JSON.parse(data));
+          resolve(JSON.parse(data))
+        } catch (e) { 
+          // If there is an error parsing JSON, log it to the console and throw the error
+          reject = (`JSON parsing fail: ${e.messsage}`);
+          throw new Error(e.message);
+        }
+      });
+    });
+    request.on('error', err => {  
+      reject(
+        `Encountered an error trying to make a request: ${err.message}`
+      );
+    });
+  })
 }
 
 // option 2
@@ -32,3 +72,4 @@ const urls = [
   'https://api.github.com/search/repositories?q=react',
   'https://api.github.com/search/repositories?q=nodejs'
 ];
+sequencePromise(urls).then((data) => console.log(data.length))
