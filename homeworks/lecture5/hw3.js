@@ -31,7 +31,7 @@ fn().then(res => {
 });
 
 console.log('start');
-//1, start, success
+// 1, start, success
 //1.fn create a new promise, and prints 1 inside the promise
 //2.stack solves the main fuction first, prints 'start'
 //3.stack creates promise and pushes resolve() into microqueue, since the promise is resolve, meaning fullfilled,
