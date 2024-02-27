@@ -12,7 +12,7 @@ interface Admin {
 
 type Person = User | Admin;
 
-const persons: Person[] = [
+const persons: Person [] = [
   {
     name: "Aaron",
     age: 99,
@@ -28,12 +28,16 @@ const persons: Person[] = [
 // fix the error showing in the following code:
 function logPerson(person: Person) {
   let additionalInformation: string;
-  if (person.role) {
-    additionalInformation = person.role;
+  /*Add as assertion to fix errors*/
+  if ((person as Admin).role) {
+    additionalInformation = (person as Admin).role;
   } else {
-    additionalInformation = person.occupation;
+    additionalInformation = (person as User).occupation;
   }
   console.log(` - ${person.name}, ${person.age}, ${additionalInformation}`);
 }
 
 persons.forEach(logPerson);
+/*
+Answer: use as assert to tell compiler the type
+*/

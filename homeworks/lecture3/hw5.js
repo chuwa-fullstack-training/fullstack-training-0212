@@ -13,10 +13,18 @@
  */
 function User() {
     
-    var password
+    var password = ""
     function setPassword(passwordInput)
     {
-        password = passwordInput
+        if(password === "")
+        {
+            password = passwordInput
+        }
+        else
+        {
+            throw new Error('Password is already set!');
+        }
+        
     }
     function checkPassword(passwordInput)
     {

@@ -45,6 +45,7 @@ let t1 = new Triangle(1.5,2,3)
 console.log(t1.getPerimeter())
 console.log(t1.getArea())
 
+// 3. implement a new class Circle. this class should inherit from Shape class, and have a radius property.
 class Circle extends Shape
 {
     constructor(radius)
@@ -52,12 +53,12 @@ class Circle extends Shape
         super()
         this.radius = radius
     }
-
+    // 4. implement a method area for Circle class
     area()
     {
         return this.radius * this.radius * Math.PI;
     }
-
+    // 5. implement a method circumference for Circle class
     circumference()
     {
         return this.radius * 2 * Math.PI
@@ -66,8 +67,8 @@ class Circle extends Shape
 var c1 = new Circle(3)
 console.log(c1.area())
 console.log(c1.circumference())
-// 3. implement a new class Circle. this class should inherit from Shape class, and have a radius property.
-// 4. implement a method area for Circle class
-// 5. implement a method circumference for Circle class
+
+
+
 
 // 6. change all code above to use ES6 class syntax

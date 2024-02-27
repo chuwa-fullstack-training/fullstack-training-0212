@@ -1,9 +1,11 @@
+const https = require('https');
 /**
  * write a function to have an arbitrary number of promises run in sequence
  * and return an array of the results
  * @param {string[]} urls - an array of urls
  * @returns {any[]} - an array of responses
  */
+
 function sequencePromise(urls) {
   const results = [];
   function fetchOne(url) {
@@ -11,14 +13,55 @@ function sequencePromise(urls) {
     // if you use `fetch`, you have to use browser console to test this homework
     return getJSON(url).then(response => results.push(response));
   }
-  // implement your code here
+    
 
-  return results;
+     return Promise.all(urls.map(x =>{return fetchOne(x)})
+     ).then(res =>{
+         console.log(results.length);
+         return results
+      });  
+  // implement your code here
+  
 }
 
 // option 1
 function getJSON(url) {
   // this is from hw5
+  return new Promise((resolve,reject)=>
+  {
+       const options = {
+         headers: {
+           'User-Agent': 'request'
+         }
+       };
+       const request = https.get(url, options, response => {
+         if (response.statusCode !== 200) {
+           console.error(
+             `Did not get an OK from the server. Code: ${response.statusCode}`
+           );
+           response.resume();
+         }
+    
+         let data = '';
+         response.on('data', chunk => {
+           data += chunk;
+         });
+         response.on('end', () => {
+           try {
+             // When the response body is complete, we can parse it and log it to the console
+             //console.log(JSON.parse(data));
+             console.log("resolved");
+             resolve(JSON.parse(data))
+       
+           } catch (e) {
+             // If there is an error parsing JSON, log it to the console and throw the error
+             reject(new Error(e.message));
+           }
+         });
+       });
+  }
+  
+  )
 }
 
 // option 2
@@ -32,3 +75,10 @@ const urls = [
   'https://api.github.com/search/repositories?q=react',
   'https://api.github.com/search/repositories?q=nodejs'
 ];
+var result =  sequencePromise(urls)
+result.then((res)=>
+{
+  console.log(res);
+})
+
+

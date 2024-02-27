@@ -10,6 +10,19 @@
  * Output: [9,4]
  *
  */
+var x = [4,9,5], y = [9,4,9,8,4]
 const intersection = (nums1, nums2) => {
-  // Your solution here
+  // Your solution here 
+  var set1 = new Set([...nums1]);
+  var set2 = new Set()
+  for(const num2 of nums2)
+  {
+    if(set1.has(num2))
+    {
+      set2.add(num2)
+    }
+  }
+  return [...set2];
 };
+/*Test*/
+console.log("Array1: " + x +"\nArray2: " + y + "\nIntersection:" + intersection(x,y))

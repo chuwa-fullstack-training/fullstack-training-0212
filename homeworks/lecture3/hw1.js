@@ -5,6 +5,7 @@
  */
 function pickCoins() {
     // implement here
+    /*DFS */
     var queue = [];
     var options = [50,25,5,1]
     var results = [];

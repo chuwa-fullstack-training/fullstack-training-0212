@@ -9,7 +9,13 @@ new Promise((resolve, reject) => {
   console.log('e');
   reject('f');
 }).then(result => console.log(result));
-
+/*Answer
+1: a
+2: c
+3: e
+4: d
+5: b
+*/
 // 2
 const fn = () =>
   new Promise((resolve, reject) => {
@@ -22,3 +28,8 @@ fn().then(res => {
 });
 
 console.log('start');
+/*Answer
+1:1
+2:start
+3:success
+ */

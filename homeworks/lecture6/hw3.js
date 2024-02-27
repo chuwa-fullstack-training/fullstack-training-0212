@@ -15,6 +15,20 @@
  */
 function debounce(func, delay) {
   // your code here
+   /**
+   * Store a timeoutId, after func executed if timeoutId is not null means there is a timer, clean the timer and make a new one
+   */
+  var timeoutId = null
+  return (func)=>
+  {
+    if(timeoutId !== null)
+    {
+      clearTimeout(timeoutId);
+    }
+    timeoutId = setTimeout(()=>{
+      func()
+    },delay)
+  }
 }
 
 /**
@@ -34,4 +48,19 @@ function debounce(func, delay) {
  */
 function throttle(func, delay) {
   // your code here
+  /**
+   * Store a timeoutId, after func executed, change timeoutId to null, if timeoutId is not null means the func has not been run yet, then return
+   */
+  var timeoutId = null
+  return (func)=>
+  {
+    if(timeoutId === null)
+    {
+      timeoutId = setTimeout(()=>{
+        func()
+        timeoutId = null;
+      },delay)
+    }
+  
+  }
 }
