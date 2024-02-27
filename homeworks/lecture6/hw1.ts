@@ -19,6 +19,15 @@ function makeCustomer<T extends User>(u: T): T {
 // requirement: the function should accept either two strings or two numbers at the same time,
 // so if parameters are one string and one number, it should throw an error
 function f(a: string | number, b: string | number) {
+  if (typeof a === "string") {
+    return `${a} : ${b}`;
+  } else {
+    return a + b;
+  }
+}
+
+//fix to
+function f(a: string | number, b: string | number) {
   if (typeof a === "string" && typeof b === 'string') {
     return `${a} : ${b}`;
   } else if (typeof a === 'number' && typeof b === 'number'){
