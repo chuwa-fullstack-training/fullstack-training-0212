@@ -72,4 +72,4 @@ const urls = [
   'https://api.github.com/search/repositories?q=react',
   'https://api.github.com/search/repositories?q=nodejs'
 ];
-sequencePromise(urls).then((data) => console.log(data.length))
+sequencePromise(urls).then((data) => console.log(data.length)).catch(err => console.log(err))
