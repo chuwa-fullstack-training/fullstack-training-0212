@@ -11,9 +11,11 @@ function sequencePromise(urls) {
     // if you use `fetch`, you have to use browser console to test this homework
     return getJSON(url).then(response => results.push(response));
   }
-  // implement your code here
+  const chain = urls.reduce((promiseChain, currentUrl) => {
+    return promiseChain.then(() => fetchOne(currentUrl));
+  }, Promise.resolve());
 
-  return results;
+  return chain.then(() => results);
 }
 
 // option 1
