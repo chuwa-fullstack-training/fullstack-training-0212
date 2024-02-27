@@ -37,3 +37,17 @@ function logPerson(person: Person) {
 }
 
 persons.forEach(logPerson);
+
+// fix
+function logPerson(person: Person) {
+  let additionalInformation: string;
+  if ('role' in person) {
+    additionalInformation = person.role;
+  } else {
+    additionalInformation = person.occupation;
+  }
+  console.log(` - ${person.name}, ${person.age}, ${additionalInformation}`);
+}
+//since the TS can't tell person is Admin or User type, if viewesd as Admin, it
+//doesn't have property role. We can use type guard with 'in' to test whether it
+//has a property 'role'
