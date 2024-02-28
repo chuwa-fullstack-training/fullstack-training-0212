@@ -10,6 +10,25 @@
  * Output: [9,4]
  *
  */
-const intersection = (nums1, nums2) => {
+ const intersection = (nums1, nums2) => {
   // Your solution here
+  // var set = new Set();
+  // for(let i = 0; i < nums1.length; i++) {
+  //   set.add(nums1[i]);
+  // }
+  // var ans = new Set();
+  // for(let i = 0; i < nums2.length; i++) {
+  //   if(set.has(nums2[i])){
+  //     ans.add(nums2[i]);
+  //   }
+  // }
+  // console.log(Array.from(ans));
+
+
+  const set1 = new Set(nums1);
+  const inter = new Set(nums2.filter(num => set1.has(num)));
+  const ans = Array.from(inter);
+  console.log(ans);
 };
+
+
