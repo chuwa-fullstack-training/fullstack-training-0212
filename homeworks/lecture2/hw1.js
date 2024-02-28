@@ -3,7 +3,6 @@
 * If o and p have a property by the same name, o's property is overwritten.
 * This function does not handle getters and setters or copy attributes.
 */
-
 function extend(o, p) {
     // implement your code here
     for(var prop in p){
