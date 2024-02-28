@@ -1,6 +1,6 @@
 // what is the output in order? and explain why?
 
-// 1
+// 1: a c e d b
 console.log('a');
 setTimeout(() => console.log('b'), 0);
 console.log('c');
@@ -10,7 +10,7 @@ new Promise((resolve, reject) => {
   reject('f');
 }).then(result => console.log(result));
 
-// 2
+// 2: 1 start success
 const fn = () =>
   new Promise((resolve, reject) => {
     console.log(1);
