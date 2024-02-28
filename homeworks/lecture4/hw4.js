@@ -12,4 +12,11 @@
  */
 const intersection = (nums1, nums2) => {
   // Your solution here
+  let result = nums1.filter((num) => nums2.includes(num));
+  let resultSet = new Set(result);
+  return [...resultSet];
 };
+
+let nums1 = [4, 9, 5],
+  nums2 = [9, 4, 9, 8, 4];
+console.log(intersection(nums1, nums2));
