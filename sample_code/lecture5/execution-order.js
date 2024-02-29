@@ -14,6 +14,7 @@ setTimeout(() => {
 
 Promise.resolve().then(() => console.log('3'));
 
+// create promise => in script
 new Promise((resolve, reject) => {
   console.log('4');
   resolve('5');

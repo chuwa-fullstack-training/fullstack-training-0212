@@ -31,7 +31,7 @@ function createPerson(ctor: PersonConstructor, name: string) {
   return new ctor(name);
 }
 
-let person = createPerson(PersonImpl, 'Aaron');
+let person = createPerson(PersonImpl, "Aaron");
 person.sayHello();
 
 // Generic functions
@@ -43,18 +43,22 @@ function firstElement(arr: any[]): any {
 //   return arr[0];
 // }
 
-let s = firstElement(['a', 'b', 'c']);
+let s = firstElement(["a", "b", "c"]);
 console.log(s);
 
 // Generic inference
-function map<Input, Output>(
-  arr: Input[],
-  func: (arg: Input) => Output
-): Output[] {
+// function map<Input, Output>(
+//   arr: Input[],
+//   func: (arg: Input) => Output
+// ): Output[] {
+//   return arr.map(func);
+// }
+
+function map<T, K>(arr: T[], func: (arg: T) => K): K[] {
   return arr.map(func);
 }
 
-let parsed = map(['1', '2', '3'], n => parseInt(n));
+let parsed = map(["1", "2", "3"], (n) => parseInt(n));
 console.log(parsed);
 
 // Generic constraints
@@ -68,7 +72,7 @@ function longest<Type extends { length: number }>(a: Type, b: Type) {
 
 let longerArray = longest([1, 2], [1, 2, 3]);
 console.log(longerArray);
-let longerString = longest('alice', 'bob');
+let longerString = longest("alice", "bob");
 console.log(longerString);
 // Error: Argument of type 'number' isn't assignable to 'string'.
 let longerNumber = longest(10, 100);
