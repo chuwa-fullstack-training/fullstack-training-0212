@@ -6,4 +6,16 @@
  */
 function format(num) {
   // your code here
+  const numString = num.toString();
+  let result = '';
+  
+  for (let i = 0; i < numString.length; i++) {
+    result += numString[i];
+    
+    if ((numString.length - i - 1) % 3 === 0 && i !== numString.length - 1) {
+      result += ',';
+    }
+  }
+
+  return result;
 }

@@ -10,10 +10,11 @@ let checked: boolean = true;
 // type: array
 let list: number[] = [1, 2, 3];
 let list2: Array<number> = [1, 2, 3];
-
+let list3: Array<number> = []
+let list4: number[] = [1,2,3]
 // type: tuple
 let x: [string, number] = ['hello', 10];
-
+let y:[string, number] = ['hanyu', 20];
 // type: enum
 // const Direction = {
 //   Up: 'Up',

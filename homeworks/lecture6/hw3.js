@@ -15,6 +15,17 @@
  */
 function debounce(func, delay) {
   // your code here
+  let timerId;
+
+  return function (...args) {
+    // Clear the previous timer
+    clearTimeout(timerId);
+
+    // Set a new timer
+    timerId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
 }
 
 /**
@@ -34,4 +45,25 @@ function debounce(func, delay) {
  */
 function throttle(func, delay) {
   // your code here
+  let lastExecutionTime = 0;
+  let timeoutId;
+
+  return function (...args) {
+    const currentTime = Date.now();
+
+    if (currentTime - lastExecutionTime >= delay) {
+      // If enough time has passed since the last execution, call the function
+      func.apply(this, args);
+      lastExecutionTime = currentTime;
+    } else {
+      // If called before the delay, ignore the call and clear any existing timeout
+      clearTimeout(timeoutId);
+
+      // Schedule the function to be called after the remaining delay
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+        lastExecutionTime = Date.now();
+      }, delay);
+    }
+  };
 }

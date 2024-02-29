@@ -14,3 +14,29 @@
  */
 
 // your code here
+const fs = require('fs');
+const path = require('path');
+
+function filterFilesByExtension(directory, extension) {
+  fs.readdir(directory, (err, files) => {
+    if (err) {
+      console.error('Error reading directory:', err);
+      return;
+    }
+
+    const filteredFiles = files.filter(file => path.extname(file) === `.${extension}`);
+    filteredFiles.forEach(file => console.log(file));
+  });
+}
+
+// Get command-line arguments
+const directory = process.argv[2];
+const extension = process.argv[3];
+
+// Check if both directory and extension are provided
+if (!directory || !extension) {
+  console.error('Usage: node hw1.js <directory> <extension>');
+} else {
+  // Call the function to filter and print files
+  filterFilesByExtension(directory, extension);
+}

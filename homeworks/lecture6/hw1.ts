@@ -4,7 +4,11 @@ type User = {
   type: string;
 };
 
-function makeCustomer<T extends User>(u: T): T {
+type Customer = {
+  id: number;
+  type: "customer"; // Specific type for customers
+};
+function makeCustomer(u: User): Customer  {
   return {
     id: u.id,
     type: "customer",
@@ -18,6 +22,6 @@ function f(a: string | number, b: string | number) {
   if (typeof a === "string") {
     return `${a} : ${b}`;
   } else {
-    return a + b;
+    return a + Number(b);
   }
 }
