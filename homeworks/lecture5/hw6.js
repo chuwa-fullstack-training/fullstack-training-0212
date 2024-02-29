@@ -4,23 +4,62 @@
  * @param {string[]} urls - an array of urls
  * @returns {any[]} - an array of responses
  */
-function sequencePromise(urls) {
+async function sequencePromise(urls) {
   const results = [];
   function fetchOne(url) {
     // for `getJSON` function you can choose either from the implementation of hw5 or `fetch` version provided by browser
     // if you use `fetch`, you have to use browser console to test this homework
-    return getJSON(url).then(response => results.push(response));
+    return getJSON(url).then(response => {
+      results.push(response);
+      console.log(results);
+    });
   }
   // implement your code here
-
+  for(let url of urls) {
+    await fetchOne(url);
+  }
   return results;
 }
 
 // option 1
 function getJSON(url) {
   // this is from hw5
+  return new Promise((resolve, reject) => {
+    const options = {
+      headers: {
+        'User-Agent': 'request'
+      }
+    };
+    const https = require('https');
+    const request = https.get(url, options, response => {
+      if(response.statusCode !== 200) {
+        reject(
+          new Error(`Did not get an OK from the server. Code: ${response.statusCode}`)
+        );
+        response.resume();
+      } else {
+        let data = '';
+        response.on('data', chunk => {
+          data += chunk;
+        });
+        response.on('end', () => {
+          try {
+            // When the response body is complete, we can parse it and log it to the console
+            resolve(JSON.parse(data));
+          } catch (e) {
+            // If there is an error parsing JSON, log it to the console and throw the error
+            reject(new Error(e.message));
+          }
+        });
+      }
+    });
+    request.on('error', err => {
+      reject(
+        `Encountered an error trying to make a request: ${err.message}`
+      );
+    });
+  });
 }
-
 // option 2
 // function getJSON(url) {
 //     return fetch(url).then(res => res.json());
@@ -32,3 +71,4 @@ const urls = [
   'https://api.github.com/search/repositories?q=react',
   'https://api.github.com/search/repositories?q=nodejs'
 ];
+console.log(sequencePromise(urls));
