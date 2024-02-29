@@ -12,19 +12,22 @@ function sequencePromise(urls) {
     return getJSON(url).then(response => results.push(response));
   }
   // implement your code here
+  const sequencePromiseChain = urls.reduce((promiseChain, url) => {
+    return promiseChain.then(() => fetchOne(url));
+  }, Promise.resolve());
 
-  return results;
+  return sequencePromiseChain.then(() => results);
 }
 
-// option 1
-function getJSON(url) {
-  // this is from hw5
-}
+// // option 1
+// function getJSON(url) {
+//   // this is from hw5
+// }
 
 // option 2
-// function getJSON(url) {
-//     return fetch(url).then(res => res.json());
-// }
+function getJSON(url) {
+    return fetch(url).then(res => res.json());
+}
 
 // test your code
 const urls = [
