@@ -13,9 +13,24 @@
  * @param {number} delay
  * @returns {function}
  */
-function debounce(func, delay) {
+
+ type AnyFunction = (...args: any[]) => void;
+ function debounce(func:AnyFunction, delay : number) : AnyFunction{
   // your code here
+  let timeId:ReturnType<typeof setTimeout>;
+
+  return function(...args : any[]): void {
+    const context = this;
+
+    clearTimeout(timeId);
+
+    timeId = setTimeout(()=> {
+      func.apply(context.args);
+    },delay);
+  }
 }
+
+
 
 /**
  * implement throttle function
@@ -34,4 +49,15 @@ function debounce(func, delay) {
  */
 function throttle(func, delay) {
   // your code here
+  let timeId : ReturnType<typeof setTimeout>;
+  return function(...args : any[]) : void {
+    const context = this;
+    if(!timeId) {
+      func.apply(context.args);
+      timeId = setTimeout(()=> {
+       timeId = undefined;
+      },delay);
+    }
+
+  }
 }
