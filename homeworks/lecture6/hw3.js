@@ -1,63 +1,39 @@
 /**
- * implement debounce function
- * explain: `func` will be called after `delay` ms. if `func` is called again before `delay` ms, the timer will be reset
- * @example
- * // after 1s, print 'hello'
- * // However, if `printHello` is called again before 1s, the timer will be reset
- * const printHello = () => console.log('hello')
- * const debouncedFn = debounce(printHello, 1000)
- * debouncedFn()
- * debouncedFn() // timer reset to 1s
- * 
- * @param {function} func
- * @param {number} delay
- * @returns {function}
+ * Implement debounce function
+ * @param {function} func - The function to be debounced
+ * @param {number} delay - The delay in milliseconds
+ * @returns {function} - The debounced function
  */
+function debounce(func, delay) {
+  let timeoutId;
 
- type AnyFunction = (...args: any[]) => void;
- function debounce(func:AnyFunction, delay : number) : AnyFunction{
-  // your code here
-  let timeId:ReturnType<typeof setTimeout>;
-
-  return function(...args : any[]): void {
-    const context = this;
-
-    clearTimeout(timeId);
-
-    timeId = setTimeout(()=> {
-      func.apply(context.args);
-    },delay);
-  }
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
 }
-
-
 
 /**
- * implement throttle function
- * explain: `func` will be called every `delay` ms. if `func` is called again before `delay` ms, the call will be ignored
- * @example
- * // after 1s, print 'hello'
- * // However, if `printHello` is called again before 1s, the call will be ignored
- * const printHello = () => console.log('hello')
- * const throttledFn = throttle(printHello, 1000)
- * throttledFn()
- * throttledFn() // ignored
- * 
- * @param {function} func
- * @param {number} delay
- * @returns {function}
+ * Implement throttle function
+ * @param {function} func - The function to be throttled
+ * @param {number} delay - The delay in milliseconds
+ * @returns {function} - The throttled function
  */
 function throttle(func, delay) {
-  // your code here
-  let timeId : ReturnType<typeof setTimeout>;
-  return function(...args : any[]) : void {
-    const context = this;
-    if(!timeId) {
-      func.apply(context.args);
-      timeId = setTimeout(()=> {
-       timeId = undefined;
-      },delay);
-    }
+  let throttling = false;
 
-  }
+  return function (...args) {
+    if (!throttling) {
+      func.apply(this, args);
+      throttling = true;
+
+      setTimeout(() => {
+        throttling = false;
+      }, delay);
+    }
+  };
 }
+
+
