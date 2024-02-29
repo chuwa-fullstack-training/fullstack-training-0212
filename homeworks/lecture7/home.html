@@ -4,15 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cool Home Page</title>
-    <script>
-        window.onload = function() {
-            if (window.submittedData) {
-                const dataDiv = document.createElement('div');
-                dataDiv.textContent = 'Submitted Data: ' + JSON.stringify(submittedData);
-                document.body.appendChild(dataDiv);
-            }
-        };
-    </script>
 </head>
 <body>
     <h1>Welcome to Nodejs tutorial</h1>
@@ -21,5 +12,6 @@
         <input type="text" name="content">
         <input type="submit" value="submit">
     </form>
+    <!--DATA-->
 </body>
 </html>

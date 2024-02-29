@@ -42,3 +42,41 @@
  *  }
  * }
  */
+
+const fetch = require('node-fetch');
+const express = require('express');
+const router = express.Router();
+
+function fetchHit(query){
+    const url = ` https://hn.algolia.com/api/v1/search?query=${query}&tags=story`;
+    return fetch(url)
+        .then((res) => res.json())
+        .then((data) => {
+            return data.hits?.length > 0 ? data.hits[0] : null;
+        })
+        .catch((error) => {
+            console.error('Error fetching data:', error);
+            return null;
+        });
+}
+
+router.get('/hw2',async (req,res)=>{
+    const query1 = req.query.query1;
+    const query2 = req.query.query2;
+
+    try {
+        const result1 = await fetchHit(query1);
+        const result2 = await fetchHit(query2);
+
+        const combinedResult = {
+            [query1]: result1,
+            [query2]: result2
+        };
+
+        res.json(combinedResult);
+    } catch (error) {
+        res.status(500).send('Error fetching stories');
+    }
+})
+
+module.exports = router;

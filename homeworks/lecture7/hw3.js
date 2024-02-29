@@ -29,8 +29,7 @@ const server = http.createServer((req, res) => {
         } else {
           const query = urlModule.parse(url, true).query;
           res.writeHead(200, { 'Content-Type': 'text/html' });
-          res.write(html);
-          res.end(html.replace('<!--DATA-->', `<script>const submittedData = ${JSON.stringify(query)};</script>`));
+          res.end(html.toString().replace('<!--DATA-->', `<script>const submittedData = ${JSON.stringify(query)};</script>`));
         }
       });
     } else {
@@ -43,6 +42,7 @@ const server = http.createServer((req, res) => {
         body.push(chunk);
       });
       req.on('end', () => {
+        body = Buffer.concat(body).toString();
         const queryParams = new URLSearchParams(body);
         const queryString = queryParams.toString();
         res.writeHead(302, { 'Location': `/home.html?${queryString}` });
