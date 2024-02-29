@@ -71,7 +71,7 @@ function controlFlowAnalysisWithNever(foo: Foo) {
     // number
   } else {
     // never
-    const check: never = foo;
+    const check: never = foo; // 保护机制，如果foo是string或number以外的类型，就会进入这行，报错
   }
 }
 // type Foo = string | number | boolean;
