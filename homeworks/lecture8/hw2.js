@@ -42,3 +42,41 @@
  *  }
  * }
  */
+const express = require('express');
+const axios = require('axios');
+const app = express();
+const port = 3000;
+
+// Router function
+const getData = async (query) => {
+  try {
+    const response = await axios.get(`https://hn.algolia.com/api/v1/search?query=${query}&tags=story`);
+    return response.data.hits[0];
+  } catch (error) {
+    console.error('Error fetching data:', error.message);
+    throw error;
+  }
+};
+
+app.get('/hw2', async (req, res) => {
+  const query1 = req.query.query1;
+  const query2 = req.query.query2;
+
+  try {
+    const result1 = await getData(query1);
+    const result2 = await getData(query2);
+
+    const finalResult = {
+      [query1]: result1,
+      [query2]: result2
+    };
+
+    res.json(finalResult);
+  } catch (error) {
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server listening at http://localhost:${port}`);
+});
