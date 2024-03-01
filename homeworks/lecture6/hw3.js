@@ -15,6 +15,11 @@
  */
 function debounce(func, delay) {
   // your code here
+  let time;
+  return function(...args){
+    clearTimeout(time);
+    time=setTimeout(()=>{func.apply(this,args);},delay);
+  }
 }
 
 /**
@@ -34,4 +39,13 @@ function debounce(func, delay) {
  */
 function throttle(func, delay) {
   // your code here
+  let sema = false;
+  return function (...args) {
+    if (!sema) {
+      func.apply(this, args);
+      sema = true;
+
+      setTimeout(() => { sema = false;}, delay);
+    }
+  };
 }
