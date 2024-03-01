@@ -14,7 +14,13 @@
  * @returns {function}
  */
 function debounce(func, delay) {
-  // your code here
+  let timerId;
+  return function(...args) {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
 }
 
 /**
@@ -33,5 +39,14 @@ function debounce(func, delay) {
  * @returns {function}
  */
 function throttle(func, delay) {
-  // your code here
+  let lastCall = 0;
+  return function(...args) {
+    const now = new Date().getTime();
+    if (now - lastCall < delay) {
+      return; // Ignore the call
+    }
+    lastCall = now;
+    return func.apply(this, args);
+  };
 }
+
