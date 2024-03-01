@@ -14,7 +14,13 @@
  * @returns {function}
  */
 function debounce(func, delay) {
-  // your code here
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  }
 }
 
 /**
@@ -33,5 +39,5 @@ function debounce(func, delay) {
  * @returns {function}
  */
 function throttle(func, delay) {
-  // your code here
+
 }

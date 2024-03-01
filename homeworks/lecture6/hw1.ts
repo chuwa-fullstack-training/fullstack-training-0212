@@ -4,12 +4,19 @@ type User = {
   type: string;
 };
 
+// function makeCustomer<T extends User>(u: T): T {
+//   return {
+//     id: u.id,
+//     type: "customer",
+//   };
+// }
 function makeCustomer<T extends User>(u: T): T {
   return {
     id: u.id,
     type: "customer",
-  };
+  } as T;
 }
+// should return type T
 
 // 2. fix the following code
 // requirement: the function should accept either two strings or two numbers at the same time,
@@ -21,3 +28,4 @@ function f(a: string | number, b: string | number) {
     return a + b;
   }
 }
+// Operator '+' cannot be applied to types 'number' and 'string | number'.

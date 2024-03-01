@@ -1,6 +1,6 @@
 // 1. use `promise` to print 1, 2, 3 in every 1 second
 function print() {
-  // your code here
+
 }
 
 // improved: print every single numbers in a list in every 1 second
