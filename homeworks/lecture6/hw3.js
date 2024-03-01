@@ -39,5 +39,13 @@ function debounce(func, delay) {
  * @returns {function}
  */
 function throttle(func, delay) {
-
+  let lastCall = 0;
+  return (...ars) => {
+    const now = new Date().getTime();
+    if (now - lastCall < delay) {
+      return;
+    }
+    lastCall = now;
+    return func.apply(this, args);
+  }
 }
