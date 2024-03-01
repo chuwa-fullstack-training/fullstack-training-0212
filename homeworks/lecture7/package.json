@@ -1,0 +1,13 @@
+{
+  "name": "lecture7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hw2.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node hw2.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
