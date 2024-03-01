@@ -9,6 +9,9 @@ new Promise((resolve, reject) => {
   console.log('e');
   reject('f');
 }).then(result => console.log(result));
+// a c e d b
+// b is inside setTimeout whcih will be called last becaused setTimeout will be placed in to the Event queue.
+// resolve('d'); will pass d into the then, log('d') after log('e');
 
 // 2
 const fn = () =>
@@ -22,3 +25,8 @@ fn().then(res => {
 });
 
 console.log('start');
+
+// 1
+// start
+// success
+// .then is placed into the event queue.

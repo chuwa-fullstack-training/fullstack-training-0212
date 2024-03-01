@@ -31,4 +31,4 @@ const urls = [
   'https://api.github.com/search/repositories?q=javascript',
   'https://api.github.com/search/repositories?q=react',
   'https://api.github.com/search/repositories?q=nodejs'
-];
+]; 
