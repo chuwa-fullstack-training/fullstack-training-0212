@@ -17,7 +17,7 @@
  *   ...
  *   }
  * ]}
- * 
+ *
  * result from https://hn.algolia.com/api/v1/search?query=banana&tags=story:
  * {
  *  "hits": [
@@ -27,7 +27,7 @@
  *   ...
  *   }
  * ]}
- * 
+ *
  * final result from http://localhost:3000/hw2?query1=apple&query2=banana:
  * {
  *   "apple":
@@ -42,3 +42,59 @@
  *  }
  * }
  */
+const express = require("express");
+const https = require("https");
+
+const app = express();
+const router = express.Router();
+app.use("/hw2", router);
+
+router.get("/", (req, res) => {
+  const query1 = req.query.query1;
+  const query2 = req.query.query2;
+  const options = {
+    headers: {
+      "User-Agent": "request",
+    },
+  };
+  https.get(
+    `https://hn.algolia.com/api/v1/search?query=${query1}&tags=story`,
+    options,
+    (response) => {
+      let data = "";
+      response.on("data", (chunk) => {
+        data += chunk;
+      });
+      response.on("end", () => {
+        const result1 = JSON.parse(data);
+        https.get(
+          `https://hn.algolia.com/api/v1/search?query=${query2}&tags=story`,
+          options,
+          (response) => {
+            let data = "";
+            response.on("data", (chunk) => {
+              data += chunk;
+            });
+            response.on("end", () => {
+              const result2 = JSON.parse(data);
+              res.json({
+                [query1]: {
+                  created_at: result1.hits[0].created_at,
+                  title: result1.hits[0].title,
+                },
+                [query2]: {
+                  created_at: result2.hits[0].created_at,
+                  title: result2.hits[0].title,
+                },
+              });
+            });
+          },
+        );
+      });
+    },
+  );
+});
+
+app.listen(3000, () => {
+  console.log("Server is running on port 3000");
+});
