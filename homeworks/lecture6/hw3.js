@@ -15,6 +15,13 @@
  */
 function debounce(func, delay) {
   // your code here
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func(...args);
+    }, delay);
+  };
 }
 
 /**
@@ -27,11 +34,20 @@ function debounce(func, delay) {
  * const throttledFn = throttle(printHello, 1000)
  * throttledFn()
  * throttledFn() // ignored
- * 
+ *
  * @param {function} func
  * @param {number} delay
  * @returns {function}
  */
 function throttle(func, delay) {
   // your code here
+  let timer;
+  return (...args) => {
+    if (!timer) {
+      timer = setTimeout(() => {
+        func(...args);
+        timer = null;
+      }, delay);
+    }
+  };
 }
