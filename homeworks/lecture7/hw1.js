@@ -39,7 +39,7 @@ fs.readdir(directory, (err, files) => {
 })
 
 // Terminal test: 
-// command: node hw1.js ./ txt
+// command: node hw1.js ./ js
 // output: hw1.js
 //         hw2.js
 //         hw3.js
