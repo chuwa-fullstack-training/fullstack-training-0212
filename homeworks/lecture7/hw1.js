@@ -14,3 +14,26 @@
  */
 
 // your code here
+const fs = require("fs");
+const path = require("path");
+
+const directory = process.argv[2];
+const extension = "." + process.argv[3];
+
+// check for user arguments
+if (!directory || !extension) {
+  throw Error("Error");
+}
+
+fs.readdir(directory, (err, files) => {
+  if (err) {
+    console.log(err.message);
+    throw err;
+  } else {
+    files.forEach((file) => {
+      if (path.extname(file) === extension) {
+        console.log(file);
+      }
+    });
+  }
+});
