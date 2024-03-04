@@ -6,4 +6,18 @@
  */
 function format(num) {
   // your code here
+  let [integer, decimal] = num.toString().split(".");
+  let res = "";
+
+  while (integer >= 1000) {
+    res = "," + (integer % 1000).toString() + res;
+    integer = parseInt(integer / 1000);
+    // console.log(integer);
+  }
+
+  res = integer + res;
+
+  return decimal === undefined ? res : res + "." + decimal;
 }
+
+console.log(format(12345.678));
