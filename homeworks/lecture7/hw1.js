@@ -14,3 +14,25 @@
  */
 
 // your code here
+const fs = require('fs');
+const path = require('path');
+const { argv } = require('process');
+
+function fileFilter(argv) {
+    const currentDir = argv[2];
+    const filterExt = '.' + argv[3];
+    fs.readdir(currentDir, (err, files) => {
+        if(err) {
+            console.log("hey",err);
+        } else {
+            files.forEach(file => {
+                // console.log(path.extname(file));
+                if(path.extname(file) == filterExt) {
+                    console.log(file);
+                }
+            })
+        }
+    });
+}
+// fileFilter(['sth', 'name', './', 'txt']);
+fileFilter(argv);
