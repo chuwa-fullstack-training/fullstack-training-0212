@@ -39,7 +39,6 @@ printList();
 
 function trafficLight() {
   // your code here
-  let i = 0;
   return new Promise((resolve) => {
     setTimeout(() => {
       console.log("red");
