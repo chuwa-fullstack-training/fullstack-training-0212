@@ -14,3 +14,25 @@
  */
 
 // your code here
+const fs = require('fs');
+const path = require('path');
+
+const directory = process.argv[2];
+const extensionFilter = process.argv[3];
+
+fs.readdir(directory, (err, files) => {
+    if (err) {
+        console.error(`Error reading directory: ${err}`);
+        process.exit(1);
+    }
+
+    const filteredFiles = files.filter(file => path.extname(file) === `.${extensionFilter}`);
+
+
+    if (filteredFiles.length === 0) {
+        console.log(`No files with the extension '${extensionFilter}' found in the directory.`);
+    } else {
+        console.log(`Files with the extension '${extensionFilter}' in the directory:`);
+        filteredFiles.forEach(file => console.log(file));
+    }
+});
