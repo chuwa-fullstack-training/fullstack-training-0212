@@ -54,8 +54,8 @@ const deleteEmp = async (id) => {
             subordinate.manager = undefined;
             await subordinate.save();
           });
-        const company = await Company.findById(employee.company);
-        company.employees.remove(employee.id);
+        const company = await Company.findById(emp.company);
+        company.employees.remove(emp.id);
         await company.save();
     } catch (e) {
         console.log('Delete Failed', e)
