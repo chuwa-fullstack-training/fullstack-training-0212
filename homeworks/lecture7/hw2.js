@@ -19,37 +19,4 @@
  */
 
 // your code here
-const http = require('http');
-const url = require('url');
 
-const server = http.createServer((req, res) => {
-  const parsedUrl = url.parse(req.url, true);
-  const iso = parsedUrl.query.iso;
-  const type = parsedUrl.pathname.split('/');
-  const dateObject = new Date(iso);
-
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-
-  if (type[type.length - 1] === 'parsetime') {
-    const formattedTime = {
-      "hour": dateObject.getUTCHours(),
-      "minute": dateObject.getUTCMinutes(),
-      "second": dateObject.getUTCSeconds()
-    };
-    res.end(JSON.stringify(formattedTime));
-  } else if (type[type.length - 1] === 'unixtime') {
-    const unixTimestamp = dateObject.getTime();
-    const unixTimeObj = {
-      "unixtime": unixTimestamp
-    };
-    res.end(JSON.stringify(unixTimeObj));
-  } else {
-    res.writeHead(400, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ error: 'Invalid endpoint' }));
-  }
-});
-
-const PORT = 3001;
-server.listen(PORT, () => {
-  console.log(`Server is listening on port ${PORT}`);
-});
