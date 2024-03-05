@@ -18,7 +18,7 @@ const CompanySchema = new Schema({
   }]
 });
 
-const EmployeeSchema = new Schema({   //schema = model
+const EmployeeSchema = new Schema({ 
   firstName: {
     type: String,
     required: true
