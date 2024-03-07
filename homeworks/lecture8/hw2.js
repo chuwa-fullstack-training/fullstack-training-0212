@@ -42,3 +42,33 @@
  *  }
  * }
  */
+
+const express = require("express");
+const app = express();
+
+app.get("/hw2", async (req, res) => {
+    const { query1, query2 } = req.query;
+    let response = await fetch(`https://hn.algolia.com/api/v1/search?query=${query1}&tags=story`);
+    let result = await response.json();
+    let data = result.hits[0]
+
+    let response2 = await fetch(`https://hn.algolia.com/api/v1/search?query=${query2}&tags=story`);
+    let result2 = await response2.json();
+    let data2 = result2.hits[0]
+
+    res.json({
+        [query1]: {
+            created_at: data.created_at,
+            title: data.title
+        },
+        [query2]: {
+            created_at: data2.created_at,
+            title: data2.title
+        }
+    });
+})
+
+app.listen(3000, () => {
+    console.log("Server listening on 3000");
+})
+
