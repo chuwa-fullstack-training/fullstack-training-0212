@@ -1,10 +1,10 @@
 const express = require("express");
 const {
-  getAllEmployees,
+  // getAllEmployees,
   // getAllEmployeesByCompany,
   getAllEmployeesByManager,
   createEmployee,
-  findEmployee,
+  // findEmployee,
   findEmployeeName,
   updateEmployee,
   deleteEmployee,
@@ -13,11 +13,9 @@ const auth = require('../middlewares/auth');
 const CustomAPIError = require('../errors');
 const router = express.Router();
 
-router.get('/employees', auth, () => { 
-  throw new CustomAPIError("No authorization to get all employees.", 401)
-});
 
-router.get('/employees', getAllEmployees);
+
+router.get('/employees',auth);
 // router.get('/companies/:id/employees', getAllEmployeesByCompany)
 router.get('/managers/:id/employees', getAllEmployeesByManager)
 router.post('/employees', createEmployee);
