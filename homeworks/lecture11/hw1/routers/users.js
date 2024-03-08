@@ -3,12 +3,13 @@ const {
   findEmployee,
   getAllEmployeesByCompany,
 } = require('../controllers/Employee');
+const auth = require('../middlewares/auth')
 
 const router = express.Router();
 
-router.get('/users/:login/employees', getAllEmployeesByCompany);
+router.get('/users/company/employees/:id', auth, getAllEmployeesByCompany);
 
-router.get('/users/:login/employees/:id', findEmployee);
+router.get('/users/employees/:id', auth, findEmployee);
 
 
 module.exports = router;

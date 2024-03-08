@@ -116,7 +116,7 @@ const getAllEmployees = async (req,res) => {
 
 const getAllEmployeesByCompany = async (req,res) => {
   try {
-    const user = await Employeeschema.findById(req.params?.login);
+    const user = await Employeeschema.findById(req.params?.id);
     const employees = await Employeeschema.find({ company: user.company });
     
     res.status(200).json(employees)
