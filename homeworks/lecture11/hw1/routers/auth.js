@@ -1,15 +1,15 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const User = require('../models/user');
+const Employee = require('../models/Employee');
 const CustomAPIError = require('../errors');
 const router = express.Router();
 
 // /auth/login
 router.post('/login', async (req, res, next) => {
   try {
-    const { username, password } = req.body;
+    const {  username: firstName, password: lastName } = req.body;
 
-    let user = await User.findOne({ username });
+    let user = await Employee.findOne({ firstName });
 
     
     if (!user) {
@@ -17,7 +17,7 @@ router.post('/login', async (req, res, next) => {
       throw new CustomAPIError('Invalid Credentials', 400);
     }
 
-    if (user.password !== password) {
+    if (user.lastName !== lastName) {
       return res.status(400).json({ message: 'Invalid Credentials' });
     }
 
@@ -27,7 +27,7 @@ router.post('/login', async (req, res, next) => {
       }
     };
 
-    const token = await jwt.sign(payload, process.env.JWT_SECRET, {
+    const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: '30d'
     });
     
