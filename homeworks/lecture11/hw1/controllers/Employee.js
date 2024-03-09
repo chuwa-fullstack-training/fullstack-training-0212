@@ -4,7 +4,7 @@ const Companyschema = require("../models/Company");
 const createEmployee = async (req,res) => {
   try {
     // find employee company
-    const company = await Companyschema.findById(req.id);
+    const company = await Companyschema.findById(req.body.company);
     if (!company) {return res.status(404).json({ message: 'Company not found' });
     }
 
