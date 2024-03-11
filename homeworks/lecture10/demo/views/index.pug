@@ -31,14 +31,14 @@ html(lang="en")
                         div.col-1
                             input(
                                 type="checkbox"
-                                name= todo.todo
+                                name=todo.todo
                                 onchange="handleCheck(this)"
-                                id= todo.todo
-                                checked= todo.done
-                                data-id= todo.id
+                                id= todo._id
+                                data-id=todo._id
+                                checked=todo.done
                                 class="form-check-input"
                             )
                         div.col
-                            label(for= todo.todo) #{todo.todo}
+                            label(for= todo._id) #{todo.todo}
         script
             include ../public/main.js
