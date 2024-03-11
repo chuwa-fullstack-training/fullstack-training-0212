@@ -42,3 +42,62 @@
  *  }
  * }
  */
+
+
+
+const express = require('express');
+const router = express.Router();
+const url = require('url');
+const app = express();
+const fetch = require('node-fetch');
+router.get('/hw2', (req, res) => {
+  
+  if(req.query.query1 === undefined || req.query.query2 === undefined) {
+    res.status(500).json({ error: 'failed' });
+    return;
+  }
+  
+  const one = `https://hn.algolia.com/api/v1/search?query=${req.query.query1}&tags=story`;
+  const two = `https://hn.algolia.com/api/v1/search?query=${req.query.query2}&tags=story`;
+  
+
+  const fetchAndFormat = (url) => {
+    return fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        const firstResult = data.hits[0];
+        if (firstResult) {
+          const queryValue = new URL(url).searchParams.get("query");
+          const formatted = {
+            [queryValue]: {
+              title: firstResult._highlightResult.title.value,
+              created_at: firstResult.created_at,
+            },
+          };
+          return formatted;
+        } else {
+          throw new Error('cannot find ');
+        }
+      });
+  };
+
+  Promise.all([fetchAndFormat(one), fetchAndFormat(two)])
+    .then(results => {
+      res.json(results);
+    })
+    .catch(error => {
+      console.error('wrong:', error);
+      res.status(500).json({ error: 'failed' });
+    });
+
+
+});
+
+
+app.use('/',router);
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server is running on http://localhost:${port}`);
+});
+
+
