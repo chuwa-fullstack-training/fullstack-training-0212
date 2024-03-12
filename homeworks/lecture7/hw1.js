@@ -14,3 +14,24 @@
  */
 
 // your code here
+const fs = require('fs');
+const path = require('path');
+
+function printFileNmae(){
+
+    fs.readdir(process.argv[2],(err,files)=>{
+        if(err) console.log(err);
+        else {
+            console.log("Files with extention "+process.argv[3]);
+            files.forEach(file=>{
+                if(path.extname(file)==='.'+process.argv[3])
+                  console.log(file); 
+            })
+        }
+    })
+
+    
+}
+
+// Call the function
+printFileNmae();

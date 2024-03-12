@@ -1,0 +1,1 @@
+example for hw1, used for test of hw1.js

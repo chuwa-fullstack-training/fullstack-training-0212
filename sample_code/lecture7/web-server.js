@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 const server = http.createServer((req, res) => {
-  const { url, method } = req;
+  const { reqUrl: url, method } = req;
   if (method === 'GET') {
     if (url === '/') {
       res.end('this is the home page');

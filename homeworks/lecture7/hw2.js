@@ -19,3 +19,46 @@
  */
 
 // your code here
+
+const http = require('http');
+const url = require('url');
+const PORT = 3300;
+
+const server = http.createServer(
+(req, res) =>{
+    const { pathname, query } = url.parse(req.url, true);
+    if(req.method==='GET'){
+        
+        if(pathname ==='/api/parsetime'){
+            
+            const currentDate = new Date();
+            const jsonResponse = {
+                "hour":currentDate.getHours(),
+                "minute":currentDate.getMinutes(),
+                "second":currentDate.getSeconds()
+            };
+            const jsonString = JSON.stringify(jsonResponse);
+            res.writeHead(200, { contentType: 'application/json' })
+            res.end(jsonString);
+        }
+        if(pathname ==='/api/unixtime'){
+            
+            const jsonResponse = {
+                "unixtime":Date.now()
+            };
+
+            const jsonString = JSON.stringify(jsonResponse);
+            res.writeHead(200, { contentType: 'application/json' })
+            res.end(jsonString);
+        }
+    }
+
+
+}
+
+);
+
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
+process.stdin.resume();
