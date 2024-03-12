@@ -14,3 +14,21 @@
  */
 
 // your code here
+const fs = require('fs'); 
+console.log(process.argv[0])
+console.log(process.argv[1])
+console.log(process.argv[2])
+fs.readdir(process.argv[2], (err, files) => { 
+    if (err) 
+      console.log(err); 
+    else { 
+      console.log("\nCurrent directory filenames:"); 
+      files.forEach(file => { 
+        console.log(typeof file)
+        if(file.indexOf(process.argv[3]) !== -1)
+        {
+            console.log(file); 
+        }
+      }) 
+    } 
+  }) 

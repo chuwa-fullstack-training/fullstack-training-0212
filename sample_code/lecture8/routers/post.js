@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/posts', (req, res) => {
+router.get('/hw1', (req, res) => {
     res.send('Get all posts');
 });
 
