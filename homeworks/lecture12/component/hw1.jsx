@@ -1,4 +1,4 @@
-import React from "react";
+\import React from "react";
 
 function Hw1() {
     return (   //use parentheses to wrap expressions or statements.
