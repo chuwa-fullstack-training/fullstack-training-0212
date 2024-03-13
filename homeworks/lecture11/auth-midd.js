@@ -5,8 +5,8 @@ module.exports = async (req, res, next) => {
   // verify
   const token =
   // token随着req发过来的方式：header, params，body
-    req.header('x-auth-token') ||  // 1.X开头（convention）：costumize，给一些自定义的内容/字段，不是req一些built in的headers，json封格
-    req.headers?.authorization?.match(/^Bearer (.+)/)[1];  // 2.直接放header的authorization里，但一般用于除token，session外的别的方式
+    req.header('x-auth-token') ||  
+    req.headers?.authorization?.match(/^Bearer (.+)/)[1];  
 
   // req.header { authorization: 'Bearer hureuiwe.bhuerer.duwwe' }  //Bearer：携带者+token信息
 
