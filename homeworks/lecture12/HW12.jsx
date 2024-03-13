@@ -4,10 +4,10 @@ import Hw2 from './components/hw2';
 import NumberConvert from './components/numberConver';
 
 const lineStyle = {
-    height: '2px',  //指定线的高度为2像素
-    backgroundColor: '#ccc',   //指定线的背景颜色为灰色 (#ccc)
-    width: '100%',   //指定线的宽度为100%
-    margin: '10px 0',  //在垂直方向上设置外边距，上边距和下边距均为10像素, 左右边距0
+    height: '2px',  
+    backgroundColor: '#ccc',   
+    width: '100%',   
+    margin: '10px 0', 
   };
 
 function HW12() {
