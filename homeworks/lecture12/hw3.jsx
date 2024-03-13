@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 
 const Counter = () => {
   const [count, setCount] = useState(0);
-  //使用 useState Hook 来创建状态变量 count 和用于更新状态的函数 setCount。初始值为 0。
-  //preCount是setCount传进来的当前状态的值
 
   const handleIncrement = (value) => {
     setCount((prevCount) => prevCount + value);
@@ -58,11 +56,6 @@ const styles = {
     backgroundColor: 'linear-gradient(to bottom, #ccc 0%, #ccc 30%, #ccc 60%, #ccc 100%)', // background color
     borderRadius: '5px', // Rounded corners
     boxShadow: '0 4px 0px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.1)', // Box shadow for a subtle lift effect
-    // offset-x: 0 (no horizontal offset)
-    // offset-y: 4px (4 pixels below the button)
-    // blur-radius: 4px (a slight blur effect) 模糊
-    // color: rgba(0, 0, 0, 0.1) (a semi-transparent black color for the shadow)
-    // rgba可换red，分别是red，green， blue，alpha（透明度）
     cursor: 'pointer', // Show pointer cursor on hover 鼠标悬停样式
   }
 };
