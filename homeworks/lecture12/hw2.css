@@ -8,8 +8,6 @@
     height: calc(100vh - 20px);  /*设置元素的高度为屏幕视口高度（100vh），减去 20 像素的高度*/
     display: grid;
     grid-template-rows: repeat(11, 1fr);
-    /* 1fr 表示每一行的高度都等分为可用空间的一部分。repeat(11, 1fr) 表示重复这个模式 11 次，因此你有 11 行，每一行都是相等的，都占据可用空间的相同部分 */
-    /* 这里创建了两列，第一列的宽度是第二列的两倍。fr 单位表示分数单位，表示可用空间的一部分。在这里，第一列占据总宽度的 2/7，第二列占据总宽度的 5/7 */
     grid-template-columns: 2fr 5fr;
     row-gap: 10px;
     column-gap: 10px;
@@ -59,7 +57,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-row: 4 / -3;   /*起始行为第 4 行。结束行为相对于末尾的第 3 行，负数表示从最后一行开始倒数。在这个例子中，-3 表示倒数第 3 行。 */
+    grid-row: 4 / -3;  
     background-color: beige;
     border: 1px solid grey;
   }
