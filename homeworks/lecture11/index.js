@@ -68,7 +68,6 @@ const {
         }
     });
     
-    //app.patch 通常用于部分更新资源, app.put更新全部，如果输入的不是全部信息，原信息遗失
     app.patch("/companies/:id", async (req, res) => {
         try {
             const id = req.params.id;
@@ -158,6 +157,3 @@ const {
     
     // test()
     app.listen(3000, () => console.log("listening on 3000"));
-
-//如果应用程序较小或简单，可以直接在应用程序实例 (app) 中定义所有中间件和路由。
-//如果应用程序较大或需要更好的模块化，可以使用路由器 (router) 将代码拆分为多个模块，每个模块处理特定路径的请求。
