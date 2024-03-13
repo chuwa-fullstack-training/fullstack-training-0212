@@ -42,3 +42,32 @@
  *  }
  * }
  */
+
+const express = require('express');
+const axios = require('axios');
+const app = express();
+const port = 3000;
+
+app.get('/hw2', async (req, res) => {
+    try {
+        const query1 = req.query.query1;
+        const query2 = req.query.query2;
+
+        const response1 = await axios.get(`https://hn.algolia.com/api/v1/search?query=${query1}&tags=story`);
+        const response2 = await axios.get(`https://hn.algolia.com/api/v1/search?query=${query2}&tags=story`);
+
+        const result = {
+            [query1]: response1.data.hits[0],
+            [query2]: response2.data.hits[0]
+        };
+
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
+
