@@ -42,3 +42,45 @@
  *  }
  * }
  */
+const express = require('express');
+const axios = require('axios');
+
+const app = express();
+const PORT = 3000;
+
+app.get('/hw2', async (req, res) => {
+  try {
+    const { query1, query2 } = req.query;
+
+    // Make requests to the Hacker News API
+    const result1 = await axios.get(`https://hn.algolia.com/api/v1/search?query=${query1}&tags=story`);
+    const result2 = await axios.get(`https://hn.algolia.com/api/v1/search?query=${query2}&tags=story`);
+
+    // Extract relevant data from the results
+    const data1 = result1.data.hits[0];
+    const data2 = result2.data.hits[0];
+
+    // Construct the final result object
+    const finalResult = {
+      [query1]: {
+        created_at: data1.created_at,
+        title: data1.title,
+      },
+      [query2]: {
+        created_at: data2.created_at,
+        title: data2.title,
+      },
+    };
+
+    // Send the final result as JSON
+    res.json(finalResult);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
+});
+
