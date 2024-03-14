@@ -23,7 +23,7 @@ const http = require('http');
 const url = require('url');
 
 const server = http.createServer((req, res) => {
-    const parsedUrl = url.parse(req.url);
+    const parsedUrl = url.parse(req.url, true);
     const time = new Date(parsedUrl.query.iso);
     
     res.writeHead(200, { 'Content-Type': 'application/json' });
