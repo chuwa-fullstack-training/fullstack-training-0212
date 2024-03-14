@@ -1,0 +1,39 @@
+.container {
+    display: grid;
+    grid-template-rows: 2fr 1fr 5fr 2fr;
+    grid-template-columns: 1fr 1fr 2fr 1fr;
+    grid-template-areas: 
+        "header header header header"
+        "nav nav nav nav"
+        "main main main main"
+        "footer footer footer footer";
+    max-width: 600px;
+}
+.header, .nav, .aside, .section, .footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    margin: 5px;
+}
+.header {
+    grid-area: header;
+}
+.nav {
+    grid-area: nav;
+}
+.main {
+    grid-area: main;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas: "aside section";
+}
+.aside {
+    grid-area: aside;
+}
+.section {
+    grid-area: section;
+}
+.footer {
+    grid-area: footer;
+}
