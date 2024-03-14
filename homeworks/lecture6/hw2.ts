@@ -1,3 +1,4 @@
+/*
 interface User {
   name: string;
   age: number;
@@ -37,3 +38,4 @@ function logPerson(person: Person) {
 }
 
 persons.forEach(logPerson);
+*/

@@ -1,3 +1,4 @@
+
 // 1. why there would be error in the following code? and how to fix it?
 type User = {
     id: number;
@@ -8,13 +9,16 @@ function makeCustomer<T extends User>(u: T): T {
     return {
       id: u.id,
       type: "customer",
-    };
+    } as T; ///here
 }
+
+/*Explanation:
+    Need to returned object adheres to the type T, are preserve the original structure of the object.
+*/
   
-  // 2. fix the following code
-  // requirement: the function should accept either two strings or two numbers at the same time,
-  // so if parameters are one string and one number, it should throw an error
-  function f(a: string | number, b: string | number) {
+  // 2. 
+
+function f(a: string | number, b: string | number) {
     if (typeof a === "string") {
       return `${a} : ${b}`;
     } else if (typeof a === "number" && typeof b === "number") {
@@ -27,4 +31,5 @@ function makeCustomer<T extends User>(u: T): T {
   /*Explanation:
     Need to ensure that the function only accepts two parameters of the same type and throws an error if the types are different.
   */
+
 

@@ -4,6 +4,8 @@
  * @param {string[]} urls - an array of urls
  * @returns {any[]} - an array of responses
  */
+
+
 function sequencePromise(urls) {
   const results = [];
   function fetchOne(url) {

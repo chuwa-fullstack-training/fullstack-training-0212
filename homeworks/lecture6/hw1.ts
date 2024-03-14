@@ -1,4 +1,5 @@
 // 1. why there would be error in the following code? and how to fix it?
+/*
 type User = {
   id: number;
   type: string;
@@ -21,3 +22,5 @@ function f(a: string | number, b: string | number) {
     return a + b;
   }
 }
+
+*/
