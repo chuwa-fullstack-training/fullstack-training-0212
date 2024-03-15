@@ -3,14 +3,8 @@
 Implement the layout shown above in React component.
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Line Example</title>
 
-    <style>
+styles.css
         .header {
             width: 600px;
             height: 200px;
@@ -76,31 +70,33 @@ Implement the layout shown above in React component.
             align-items: center;
             margin: 10px auto;
         }
-    </style>
 
-</head>
-<body>
-    <div class="header">
-        <p>Header</p>
-    </div>
-    <div class="Nav">
-        <p>Nav</p>
-    </div>
 
-    <div class="table-container">
+import React from 'react';
+import './styles.css';
+
+function App() {
+  return (
+    <div>
+      <div className="table-container">
         <table>
-            <tr>
-                <td class="one-third">Aside</td>
-                <td class="two-thirds">section</td>
-            </tr>
+          <tr>
+            <td className="one-third">Aside</td>
+            <td className="two-thirds">section</td>
+          </tr>
         </table>
-    </div>
+      </div>
 
-    <div class="Footer">
+      <div className="Footer">
         <p>Footer</p>
+      </div>
     </div>
-</body>
-</html>
+  );
+}
+
+export default App;
+
+   
 
 
 ![image](https://github.com/chuwa-fullstack-training/fullstack-training-0212/assets/47225065/f7fdcde8-9cf6-4696-88bd-77191becbdaf)
