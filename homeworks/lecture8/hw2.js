@@ -17,7 +17,7 @@
  *   ...
  *   }
  * ]}
- * 
+ *
  * result from https://hn.algolia.com/api/v1/search?query=banana&tags=story:
  * {
  *  "hits": [
@@ -27,7 +27,7 @@
  *   ...
  *   }
  * ]}
- * 
+ *
  * final result from http://localhost:3000/hw2?query1=apple&query2=banana:
  * {
  *   "apple":
@@ -42,3 +42,17 @@
  *  }
  * }
  */
+
+const express = require("express");
+const app = express();
+const port = 3000;
+
+const searchRouter = require("./routers/hw2");
+
+app.use(searchRouter);
+
+app.get("*", (req, res) => {
+  res.status(404).end("This is the 404 page");
+});
+
+app.listen(port, () => console.log(`Server is running on port ${port}!`));

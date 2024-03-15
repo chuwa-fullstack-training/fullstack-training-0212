@@ -1,0 +1,11 @@
+.buttons{
+    display: flex;
+    gap:5px;
+}
+
+.button{
+    border: 2px solid grey;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #888888;
+    padding:2px 5px;
+}
