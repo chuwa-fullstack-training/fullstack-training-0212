@@ -1,12 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-dotenv.config();
 companyRouter = require("./routers/companyRouter");
 employeeRouter = require("./routers/employeeRouter");
 
 const app = express();
 const PORT = 3000;
+dotenv.config();
 
 const connectDB = async () => {
   try {
