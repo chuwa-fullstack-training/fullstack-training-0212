@@ -65,10 +65,17 @@ router.delete('/:id', async (req, res) => {
 // Get all employees of a company
 router.get('/:id/employees', async (req, res) => {
   try {
-    const employees = await Employee.find({ _id: { $in: res.company._employees } });
-    res.json(employees);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    const employees = await Company.findById(req.params?.id).then((company) => {
+      return Promise.all(
+        company.employees?.map((id) => {
+          return Employee.findById(id);
+        })
+      );
+    });
+    res.status(200).json(employees);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ message: "Error on getting employees" });
   }
 });
 
