@@ -67,3 +67,12 @@ const getAllEmployeesFromCompany = async (req, res) => {
     res.status(500).json({ message: "Error on getting employees" });
   }
 };
+
+module.exports = {
+  createCompany,
+  findCompany,
+  updateCompany,
+  deleteCompany,
+  getAllCompanies,
+  getAllEmployeesFromCompany,
+};

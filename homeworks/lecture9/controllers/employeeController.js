@@ -1,5 +1,5 @@
-const Employee = require("./schema").Employee;
-const Company = require("./schema").Company;
+const Employee = require("../schema").Employee;
+const Company = require("../schema").Company;
 
 const getAllEmployees = async (req, res) => {
   try {
@@ -57,4 +57,12 @@ const createEmployee = async (req, res) => {
     console.error(err);
     res.status(500).json({ message: "Error on creating new employee." });
   }
+};
+
+module.exports = {
+  getAllEmployees,
+  getOneEmployee,
+  updateEmployee,
+  deleteEmployee,
+  createEmployee,
 };
