@@ -19,3 +19,46 @@
  */
 
 // your code here
+
+const http = require('http');
+const url = require('url');
+
+const server = http.createServer((req, res) => {
+  const parsedUrl = url.parse(req.url, true);
+  const pathname = parsedUrl.pathname;
+  const iso = parsedUrl.query.iso;
+  let result;
+
+  if (!iso) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: "Missing 'iso' query parameter" }));
+    return;
+  }
+
+  const date = new Date(iso);
+
+  if (pathname === '/api/parsetime') {
+    result = {
+      hour: date.getHours(),
+      minute: date.getMinutes(),
+      second: date.getSeconds(),
+    };
+  } else if (pathname === '/api/unixtime') {
+    result = {
+      unixtime: date.getTime(),
+    };
+  }
+
+  if (result) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify(result));
+  } else {
+    res.writeHead(404, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: "Not found" }));
+  }
+});
+
+const PORT = 8000; 
+server.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
+});

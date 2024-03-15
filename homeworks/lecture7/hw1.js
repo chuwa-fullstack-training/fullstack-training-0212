@@ -14,3 +14,27 @@
  */
 
 // your code here
+
+const fs = require('fs');
+const path = require('path');
+
+if (process.argv.length < 4) {
+  console.error("Usage: node <script> <directory> <extension>");
+  process.exit(1);
+}
+
+const directory = process.argv[2];
+const extensionFilter = '.' + process.argv[3];
+
+fs.readdir(directory, (err, files) => {
+  if (err) {
+    console.error("An error occurred:", err);
+    return;
+  }
+
+  files.forEach(file => {
+    if (path.extname(file) === extensionFilter) {
+      console.log(file);
+    }
+  });
+});

@@ -42,3 +42,49 @@
  *  }
  * }
  */
+
+
+
+const express = require('express');
+const fetch = require('node-fetch');
+const app = express();
+const port = 8000;
+
+
+async function fetchStories(query) {
+  const url = `https://hn.algolia.com/api/v1/search?query=${query}&tags=story`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    if (data.hits && data.hits.length > 0) {
+      const { created_at, title } = data.hits[0];
+      return { created_at, title };
+    }
+    return {};
+  } catch (error) {
+    console.error('Error fetching stories:', error);
+    return {};
+  }
+}
+
+app.get('/hw2', async (req, res) => {
+  const { query1, query2 } = req.query;
+  
+  // Validate input
+  if (!query1 || !query2) {
+    return res.status(400).send({ error: 'Both query1 and query2 are required.' });
+  }
+  
+  const result1 = await fetchStories(query1);
+  const result2 = await fetchStories(query2);
+  
+  const finalResult = {
+    [query1]: result1,
+    [query2]: result2
+  };
+  res.json(finalResult);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
