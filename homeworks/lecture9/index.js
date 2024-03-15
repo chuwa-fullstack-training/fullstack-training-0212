@@ -15,7 +15,7 @@ mongoose
   .catch(err => {
     console.log('Error connecting to MongoDB', err);
   });
-
+const app = express()
 const router = express.Router();
 
 // Create a new company
@@ -183,3 +183,8 @@ router.get("/company/:id/employees", async (req, res) => {
         res.status(500).json("Error found all employees of the company");
     }
 });
+
+app.listen(3000, () => {
+    console.log('App listening on port 3000');
+});
+  
