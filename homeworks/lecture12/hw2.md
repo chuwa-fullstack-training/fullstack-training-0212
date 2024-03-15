@@ -73,18 +73,28 @@ styles.css
 
 
 import React from 'react';
-import './styles.css';
+import './styles.css'; 
 
 function App() {
   return (
     <div>
+      <div className="header">
+        <h1>Header</h1>
+      </div>
+
+      <div className="Nav">
+        <h2>Nav</h2>
+      </div>
+
+
       <div className="table-container">
-        <table>
-          <tr>
-            <td className="one-third">Aside</td>
-            <td className="two-thirds">section</td>
-          </tr>
-        </table>
+        <div className="one-third">
+          <h3>Aside</h3>
+        </div>
+
+        <div className="two-thirds">
+          <h3>Section</h3>
+        </div>
       </div>
 
       <div className="Footer">
@@ -95,6 +105,7 @@ function App() {
 }
 
 export default App;
+
 
    
 
