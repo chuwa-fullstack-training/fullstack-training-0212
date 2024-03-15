@@ -1,5 +1,5 @@
-const Company = require("./schema").Company;
-const Employee = require("./schema").Employee;
+const Company = require("../schema").Company;
+const Employee = require("../schema").Employee;
 
 const createCompany = async (req, res) => {
   try {
