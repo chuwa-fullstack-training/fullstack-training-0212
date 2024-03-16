@@ -29,6 +29,7 @@ const server = http.createServer((req, res) => {
         } else {
           const query = urlModule.parse(url, true).query;
           res.writeHead(200, { 'Content-Type': 'text/html' });
+          res.write(html);
           res.end(html.toString().replace('<!--DATA-->', `<script>const submittedData = ${JSON.stringify(query)};</script>`));
         }
       });

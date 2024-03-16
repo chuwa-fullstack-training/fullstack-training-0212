@@ -1,0 +1,25 @@
+<!-- views/todo.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To Do List</title>
+</head>
+<body>
+    <h1>To Do List</h1>
+    <form action="/todos" method="post">
+        <input type="text" name="title" placeholder="Add new todo">
+        <button type="submit">Add</button>
+    </form>
+
+    <ul>
+        <% todos.forEach(function(todo){ %>
+            <li>
+                <%= todo.title %>
+                <form action="/todos/<%= todo._id %>?_method=DELETE" method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
