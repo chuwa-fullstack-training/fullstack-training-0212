@@ -7,19 +7,19 @@ const Company = require('../models/Company');
 // Create a new employee
 router.post('/', async (req, res) => {
   try {
-    const employee = await Employee.create(req.body);
-    const { companyId } = req.body;
-    const company = await Company.findById(companyId);
+    const company = await Company.findById(req.body.company);
     if (!company) {
-      return res.status(404).json({ message: 'Employee Created, But company not found' });
+      throw new Error("Company doesn't exist");
     }
-    // Add the employee to the company's employees list
-    company._employees.push(employee._id);
-    await company.save();
 
-    res.status(201).json(employee);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
+    const employee = new Employee(req.body);
+    company.employees.push(employee);
+    await employee.save();
+    await company.save();
+    res.status(200).json({ message: "Employee created successfully!" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Error on creating new employee." });
   }
 });
 
