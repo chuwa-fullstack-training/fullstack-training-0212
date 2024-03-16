@@ -42,3 +42,53 @@
  *  }
  * }
  */
+
+const express = require('express');
+const https = require('https');
+
+const app = express();
+const port = 3000;
+
+app.get('/hw2', (req, res) => {
+    const { query1, query2 } = req.query;
+
+    const fetchStory = (query) => {
+        return new Promise((resolve, reject) => {
+            const url = `https://hn.algolia.com/api/v1/search?query=${query}&tags=story`;
+            https.get(url, (response) => {
+                let data = '';
+                response.on('data', (chunk) => {
+                    data += chunk;
+                });
+                response.on('end', () => {
+                    resolve(JSON.parse(data).hits[0]);
+                });
+            }).on('error', (err) => {
+                reject(err);
+            });
+        });
+    };
+
+    Promise.all([
+        fetchStory(query1),
+        fetchStory(query2)
+    ]).then(results => {
+        const finalResult = {
+            [query1]: {
+                "created_at": results[0].created_at,
+                "title": results[0].title
+            },
+            [query2]: {
+                "created_at": results[1].created_at,
+                "title": results[1].title
+            }
+        };
+        res.json(finalResult);
+    }).catch(error => {
+        res.status(500).send('Error fetching data');
+    });
+});
+
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
+});
