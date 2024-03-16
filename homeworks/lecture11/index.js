@@ -15,6 +15,7 @@ mongoose.connect(MONGODB_URI, {
 
 // Routes
 app.use('/api/login', require('./routes/auth'));
+app.use('/api/signup', require('./routes/signup'));
 app.use('/api/companies', require('./routes/companies'));
 app.use('/api/employees', require('./routes/employees'));
 
