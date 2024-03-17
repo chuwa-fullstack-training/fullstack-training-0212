@@ -42,3 +42,42 @@
  *  }
  * }
  */
+
+const express = require('express');
+const fetch = require('node-fetch');
+const app = express();
+const port = 3000;
+
+app.get('/hw2', async (req, res) => {
+  const { query1, query2 } = req.query;
+  try {
+    // Perform both searches in parallel
+    const responses = await Promise.all([
+      fetch(`https://hn.algolia.com/api/v1/search?query=${encodeURIComponent(query1)}&tags=story`),
+      fetch(`https://hn.algolia.com/api/v1/search?query=${encodeURIComponent(query2)}&tags=story`)
+    ]);
+
+    // Await both JSON responses
+    const [data1, data2] = await Promise.all(responses.map(response => response.json()));
+
+    // Extract the first hit from each query result or null if no hits
+    const result1 = data1.hits.length > 0 ? data1.hits[0] : null;
+    const result2 = data2.hits.length > 0 ? data2.hits[0] : null;
+
+    // Create and send the final result object
+    const finalResult = {
+      [query1]: result1 ? { created_at: result1.created_at, title: result1.title } : 'No result',
+      [query2]: result2 ? { created_at: result2.created_at, title: result2.title } : 'No result'
+    };
+
+    res.json(finalResult);
+  } catch (error) {
+    console.error('Failed to fetch data:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
+

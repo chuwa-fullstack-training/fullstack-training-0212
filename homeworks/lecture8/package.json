@@ -1,0 +1,18 @@
+{
+  "name": "lecture8",
+  "version": "1.0.0",
+  "description": "",
+  "main": "hw2.js",
+  "type": "commonjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3",
+    "node-fetch": "^2.7.0",
+    "pug": "^3.0.2"
+  }
+}
