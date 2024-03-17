@@ -30,3 +30,6 @@ The Employee schema should have the following fields:
 - resigned: Boolean
 - salary: Number
 - _manager: EmployeeSchema_ (optional)
+
+
+// mongodb+srv://yanzi14714:yanzi@aideny.0mz7t3y.mongodb.net/?retryWrites=true&w=majority&appName=AidenY
