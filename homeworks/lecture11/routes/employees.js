@@ -23,7 +23,7 @@ const verifyToken = (req, res, next) => {
 // Create a new employee
 router.post('/', async (req, res) => {
   try {
-    const company = await Company.findById(req.params?.company);
+    const company = await Company.findById(req.body.company);
     if (!company) {
       throw new Error("Company doesn't exist");
     }
