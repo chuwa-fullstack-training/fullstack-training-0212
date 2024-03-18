@@ -1,18 +1,16 @@
 {
-  "name": "demo",
+  "dependencies": {
+    "mongodb": "^6.5.0"
+  },
+  "name": "lecture9",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
+  "devDependencies": {},
   "scripts": {
-    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.18.3",
-    "nodemon": "^2.0.22",
-    "pug": "^3.0.2"
-  }
+  "description": ""
 }
