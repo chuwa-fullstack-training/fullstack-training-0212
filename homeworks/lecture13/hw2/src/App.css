@@ -1,0 +1,54 @@
+.phone-shape {
+  width: 300px;
+  height: 600px;
+  border: 3px solid #000;
+  border-radius: 40px;
+  top: 60px;
+  left: 20%;
+  position: relative;
+  overflow: hidden;
+}
+
+.phone-screen {
+  background-color: lightblue;
+  position: absolute;
+  top: 70px;
+  bottom: 70px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content:stretch;
+}
+
+.status-bar {
+  border: 3px dotted #000;
+  height: 30px;
+  width: calc(100% - 5px);
+  font:bold;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, auto);
+  gap: 20px;
+  padding: 10px;
+
+}
+
+.btn-item {
+  width: 25px;
+  height: 25px;
+  font-weight: bold;
+  font-size: 30px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
