@@ -58,4 +58,4 @@ function b() {
 b();
 console.log(a);
 // 1
-//TODO: why?????????
+// the `a` inside function b shadowing the parameter a outside

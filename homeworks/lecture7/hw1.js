@@ -36,3 +36,4 @@ function fileFilter(argv) {
 }
 // fileFilter(['sth', 'name', './', 'txt']);
 fileFilter(argv);
+module.exports(fileFilter);

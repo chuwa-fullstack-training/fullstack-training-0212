@@ -1,0 +1,21 @@
+.container {
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+.dropdown-button {
+  top: 50px;
+  display: flex;
+  justify-content: center;
+}
+.card {
+  display: flex;
+  justify-content: center;
+  position:relative;
+  border: 0cap;
+  max-width: 500px;
+  gap: 20px;
+}

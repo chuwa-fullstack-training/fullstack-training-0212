@@ -44,7 +44,7 @@ const server = http.createServer((req, res) => {
       let body = [];
       req.on('data', chunk => {
         body.push(chunk);
-      });;
+      });
       req.on('end', () => {
         const parsedBody = Buffer.concat(body).toString();
         res.statusCode = '302';

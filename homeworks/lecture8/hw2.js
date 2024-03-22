@@ -42,3 +42,28 @@
  *  }
  * }
  */
+const express = require('express');
+const app = express();
+const port = 3000;
+const axios = require('axios');
+
+const fetchResult = (query) => axios.get(`https://hn.algolia.com/api/v1/search?query=${query}&tags=story`);
+
+app.get('/hw2', (req, res) => {
+    const { query1, query2 } = req.query;
+    const combine = {};
+    fetchResult(query1)
+    .then((response) => {
+        combine[query1] = response.data.hits;
+        return fetchResult(query2);
+    })
+    .then((response) => {
+        combine[query2] = response.data.hits;
+        res.send(JSON.stringify(combine));
+    })
+    .catch((err) => {
+        console.log('ERORR!!!', err);
+    });
+});
+
+app.listen(port, () => console.log(`Example app listening on port ${port}.`));

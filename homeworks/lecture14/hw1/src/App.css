@@ -1,0 +1,54 @@
+.container {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: 20px;
+}
+
+.user-list-container {
+  max-width: 100%;
+}
+
+.column-name {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.user-item {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row: auto;
+  border-top: 1px solid lightgrey;
+  gap: 10px;
+  padding: 20px;
+}
+
+.user-id,
+.user-username {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.user-avatar {
+  width: 100%;
+}
+
+.user-profile-container {
+  max-width: 100%;
+  top: 80px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-img {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%; 
+  margin-top: 20px;
+  margin-left: 30px;
+  padding-right: 0;
+}
+
+.detail-container {
+  color: gray;
+}
