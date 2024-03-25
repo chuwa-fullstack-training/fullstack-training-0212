@@ -10,8 +10,8 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <App_function />
-    {/* <App_redux/> */}
+    {/* <App_function /> */}
+    <App_redux/>
     {/* <App_RTK /> */}
   </StrictMode>
 );
