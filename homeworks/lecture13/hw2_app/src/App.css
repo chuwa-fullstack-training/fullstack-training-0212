@@ -1,0 +1,40 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.status-bar {
+  height: 60px;
+  background-color: #007bff;
+  color: #000;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  z-index: 999; 
+}
+
+.button-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  padding: 10px;
+  background-color: #fff;
+  color: #007bff;
+  border-radius: 5px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+body {
+  background-color: #007bff; 
+}
