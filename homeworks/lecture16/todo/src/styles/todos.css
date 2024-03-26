@@ -1,0 +1,56 @@
+.todo {
+    width: 500px;
+    padding: 1%;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .input {
+    display: block;
+    height: 30px;
+    width: 80%;
+    margin: auto;
+  }
+  
+  .buttonContainer {
+    height: 30px;
+    width: 80%;
+    margin: 3% auto auto auto;
+  }
+  
+  label {
+    margin-top: 0.5%;
+  }
+  
+  #clearButton {
+    height: 30px;
+    float: right;
+    font-size: 15px;
+  }
+  
+  .listContainer {
+    width: 80%;
+    margin: 1% auto auto auto;
+  }
+  
+  #selectAll {
+    margin-bottom: 4%;
+  }
+  
+  .checkbox {
+    height: 27px;
+    width: 95%;
+    margin: auto;
+    padding-left: 1%;
+    padding-top: 1%;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+  }
+  
+  .checkbox:last-child {
+    border-bottom: 1px solid black;
+  }
+  
