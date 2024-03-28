@@ -1,0 +1,1 @@
+https://codesandbox.io/p/sandbox/color-component-mygk8x?file=%2Fsrc%2FApp.js%3A48%2C32

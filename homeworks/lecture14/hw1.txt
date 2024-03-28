@@ -1,0 +1,1 @@
+https://codesandbox.io/p/sandbox/githublist-qfpkmq?file=%2Fsrc%2Fcomponents%2FuserDetail.tsx

@@ -9,3 +9,4 @@ Requirements:
 - [ ] Display the number of active todos
 
 ![Todo List](./todo-list.gif)
+
