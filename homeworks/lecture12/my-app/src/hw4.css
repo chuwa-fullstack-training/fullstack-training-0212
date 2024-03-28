@@ -1,0 +1,11 @@
+input {
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input[readonly] {
+    background-color: #e9e9e9;
+  }
+  
