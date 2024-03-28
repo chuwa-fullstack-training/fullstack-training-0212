@@ -10,4 +10,4 @@
 - [ ] The color component should be a single component, which is a square with a background color, and name of the component.
 - [ ] When the name of the component is changed, it should be reflected in the component where the user chooses which component to be selected.
 
-https://codesandbox.io/p/sandbox/hw14-2-3546jq?file=%2Fsrc%2FApp.js
+[https://codesandbox.io/p/sandbox/hw14-2-3546jq?file=%2Fsrc%2FApp.js](https://codesandbox.io/p/sandbox/hw14-2-3546jq)https://codesandbox.io/p/sandbox/hw14-2-3546jq
