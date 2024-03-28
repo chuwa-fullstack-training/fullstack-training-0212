@@ -11,5 +11,4 @@
 - [ ] The user's profile page should show the user's avatar, username, name, and some repositories of the user.
 
 
-
-https://codesandbox.io/p/devbox/9d5hq5?file=%2Fsrc%2Fstyles.css%3A1%2C1
+[https://codesandbox.io/p/devbox/hw14-1-9d5hq5](https://codesandbox.io/p/sandbox/hw14-1-sc9gr8)https://codesandbox.io/p/sandbox/hw14-1-sc9gr8
