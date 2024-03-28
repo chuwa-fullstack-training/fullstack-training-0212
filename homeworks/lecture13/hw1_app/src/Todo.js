@@ -1,66 +1,89 @@
-import React, { useState } from 'react';
+import React from 'react';
 import"./App.css";
 
-function TodoApp() {
-  const [todos, setTodos] = useState([]);
-  const [newTodo, setNewTodo] = useState('');
-
-  const addTodo = () => {
+class TodoApp extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: [],
+      newTodo: ''
+    };
+  }
+  
+  addTodo = () => {
+    const { newTodo, todos } = this.state;
     if (newTodo.trim() !== '') {
-      setTodos([...todos, { text: newTodo, completed: false }]);
-      setNewTodo('');
+      this.setState({
+        todos: [...todos, { text: newTodo, completed: false }],
+        newTodo: ''
+      });
     }
   };
 
   
-  const toggleTodoCompletion = index => {
+  toggleTodoCompletion = index => {
+    const { newTodo, todos } = this.state;
     const updatedTodos = [...todos];
     updatedTodos[index].completed = !updatedTodos[index].completed;
-    setTodos(updatedTodos);
+    this.setState({
+      todos: updatedTodos,
+      newTodo: newTodo
+    });
   };
 
-  const markAllCompleted = () => {
+  markAllCompleted = () => {
+    const { newTodo, todos } = this.state;
     const updatedTodos = todos.map(todo => ({ ...todo, completed: true }));
-    setTodos(updatedTodos);
+    this.setState({
+      todos: updatedTodos,
+      newTodo: newTodo
+    });
   };
 
   
-  const clearCompletedTodos = () => {
+  clearCompletedTodos = () => {
+    const { newTodo, todos } = this.state;
     const updatedTodos = todos.filter(todo => !todo.completed);
-    setTodos(updatedTodos);
+    this.setState({
+      todos: updatedTodos,
+      newTodo: newTodo
+    });
   };
 
-  const countActiveTodos = () => {
+  countActiveTodos = () => {
+    const { todos } = this.state;
     return todos.filter(todo => !todo.completed).length;
   };
 
-  return (
-    <div>
+  render(){
+    return (
+      <div>
       <h1>Todo List</h1>
       <input
         type="text"
         placeholder="Enter a new todo"
-        value={newTodo}
-        onChange={e => setNewTodo(e.target.value)}
+        value={this.state.newTodo}
+        onChange={e => this.setState({...this.state.todos,newTodo:e.target.value})}
       />
-      <button onClick={addTodo}>Add Todo</button>
+      <button onClick={this.addTodo}>Add Todo</button>
       <ul>
-        {todos.map((todo, index) => (
+        {this.state.todos.map((todo, index) => (
           <li key={index} style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
             <input
               type="checkbox"
               checked={todo.completed}
-              onChange={() => toggleTodoCompletion(index)}
+              onChange={() => this.toggleTodoCompletion(index)}
             />
             {todo.text}
           </li>
         ))}
       </ul>
-      <button onClick={markAllCompleted}>Mark All Completed</button>
-      <button onClick={clearCompletedTodos}>Clear Completed Todos</button>
-      <p>Number of active todos: {countActiveTodos()}</p>
+      <button onClick={this.markAllCompleted}>Mark All Completed</button>
+      <button onClick={this.clearCompletedTodos}>Clear Completed Todos</button>
+      <p>Number of active todos: {this.countActiveTodos()}</p>
     </div>
-  );
+    );
+  }
 }
 
 export default TodoApp;
