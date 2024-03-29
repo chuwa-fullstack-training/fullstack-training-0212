@@ -1,10 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './hw1';
+import TodoApp from './hw1';
+import { Provider } from 'react-redux';
+import store from './store'; // Import the store from Redux Toolkit
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+const App = () => (
+  <Provider store={store}>
+    <TodoApp />
+  </Provider>
 );
+
+export default App;
