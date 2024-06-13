@@ -13,6 +13,7 @@ function pickCoins() {
 }
 
 function helper(amount, rest,prev){
+    if (counter >= 2) return; 
     if(amount===0&&rest===0){
         result["Solution" + counter] = [...prev];
         counter++;
@@ -38,3 +39,5 @@ function helper(amount, rest,prev){
     prev[3]--;
 
 }
+
+pickCoins();

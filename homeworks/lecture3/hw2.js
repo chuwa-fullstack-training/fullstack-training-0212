@@ -2,16 +2,16 @@
  * console.log(sum(2)(3) === 5)
  * console.log(sum(2, 3) === 5)
  */
-function sum() {
+function sum(...arg) {
     // implement here
-    if(arguments.length>1){
+    if(arg.length>1){
         var res=0;
-        for (var i = 0; i < arguments.length; i++) {
-            res += arguments[i];
+        for (var i = 0; i < arg.length; i++) {
+            res += arg[i];
         }
         return res;
-    }else if(arguments.length===1&& typeof arguments[0] === 'number'){
-        var initialSum = arguments[0];
+    }else if(arg.length===1&& typeof arg[0] === 'number'){
+        var initialSum = arg[0];
 
         function innerSum(nextValue) {
             return initialSum + nextValue;

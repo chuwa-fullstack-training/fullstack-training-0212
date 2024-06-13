@@ -19,14 +19,14 @@ function myFunction() {
     console.log(blockConst); // Accessible inside the block
   }
 
-  console.log(blockVar); // Error: blockVar is not defined
+  //console.log(blockVar); // Error: blockVar is not defined
   // console.log(blockConst); // Error: blockConst is not defined
 }
 
 myFunction();
-console.log(functionVar);
+//console.log(functionVar);
 
-console.log(globalVar); // Accessible outside the function
+//console.log(globalVar); // Accessible outside the function
 console.log(global.globalVar);
 
 test = "I'm a global variable, test";

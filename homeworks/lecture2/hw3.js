@@ -8,7 +8,7 @@ console.log(0.1 + 0.2 == 0.3);
 console.log(1 +  "2" + "2");
 //122, the 1 will be convert to string type, then In string "1"+"2"+"2"="122"
 console.log(1 +  +"2" + "2");
-//33, three steps. Firstly, +"2" result in number 2, Secondly, 1 + +"2" result in number 3. Lastly, 3+"2" result in string "32"
+//32, three steps. Firstly, +"2" result in number 2, Secondly, 1 + +"2" result in number 3. Lastly, 3+"2" result in string "32"
 console.log(1 +  -"1" + "2");
 //02 firstly, -"1" result number -1, Secondly, 1+ -"1" result number 0, Lastly, 0+"2" result in string"02""
 console.log(+"1" +  "1" + "2");

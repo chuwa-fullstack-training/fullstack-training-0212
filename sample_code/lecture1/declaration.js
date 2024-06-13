@@ -19,4 +19,4 @@ const pi = 3.14;
 console.log(pi); // Outputs: 3.14
 
 // Trying to re-assign value to variable declared with const will throw an error
-// pi = 3.1415; // Uncaught TypeError: Assignment to constant variable.
+pi = 3.1415; // Uncaught TypeError: Assignment to constant variable.

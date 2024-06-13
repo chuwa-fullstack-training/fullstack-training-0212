@@ -15,7 +15,7 @@ let convertedString = number.toString();
 console.log(convertedString); // Output: "42" (string)
 
 // Converting string to boolean
-let stringBoolean = "true";
+let stringBoolean = "false";
 let convertedBoolean = Boolean(stringBoolean);
 console.log(convertedBoolean); // Output: true (boolean)
 
