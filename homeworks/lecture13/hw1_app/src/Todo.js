@@ -1,89 +1,77 @@
-import React from 'react';
-import"./App.css";
+import React from "react";
 
-class TodoApp extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {
-      todos: [],
-      newTodo: ''
-    };
-  }
-  
+class Todo extends React.Component {
+  state = {
+    todos: [
+      { done: false, content: "example1" },
+      { done: false, content: "example2" },
+    ],
+    newTodo: "",
+  };
   addTodo = () => {
-    const { newTodo, todos } = this.state;
-    if (newTodo.trim() !== '') {
-      this.setState({
-        todos: [...todos, { text: newTodo, completed: false }],
-        newTodo: ''
-      });
+    if (this.state.newTodo.trim()) {
+      this.setState((prevState) => ({
+        todos: [
+          ...prevState.todos,
+          { done: false, content: prevState.newTodo },
+        ],
+        newTodo: "",
+      }));
     }
   };
-
-  
-  toggleTodoCompletion = index => {
-    const { newTodo, todos } = this.state;
-    const updatedTodos = [...todos];
-    updatedTodos[index].completed = !updatedTodos[index].completed;
-    this.setState({
-      todos: updatedTodos,
-      newTodo: newTodo
-    });
+  setNewToDo = (e) => {
+    this.setState({ newTodo: e.target.value });
   };
-
-  markAllCompleted = () => {
-    const { newTodo, todos } = this.state;
-    const updatedTodos = todos.map(todo => ({ ...todo, completed: true }));
-    this.setState({
-      todos: updatedTodos,
-      newTodo: newTodo
-    });
+  markDone = (index) => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo, i) =>
+        i === index ? { ...todo, done: !todo.done } : todo
+      ),
+    }));
   };
-
-  
-  clearCompletedTodos = () => {
-    const { newTodo, todos } = this.state;
-    const updatedTodos = todos.filter(todo => !todo.completed);
-    this.setState({
-      todos: updatedTodos,
-      newTodo: newTodo
-    });
+  markAllDone = () => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.map((todo) => ({ ...todo, done: true })),
+    }));
   };
-
-  countActiveTodos = () => {
-    const { todos } = this.state;
-    return todos.filter(todo => !todo.completed).length;
+  clearDoneToDo= () => {
+    this.setState((prevState) => ({
+      todos: prevState.todos.filter((todo) => todo.done=== false),
+    }));
   };
-
-  render(){
+  activeToDo=() => this.state.todos.filter((todo) => todo.done=== false).length;
+  render() {
     return (
       <div>
-      <h1>Todo List</h1>
-      <input
-        type="text"
-        placeholder="Enter a new todo"
-        value={this.state.newTodo}
-        onChange={e => this.setState({...this.state.todos,newTodo:e.target.value})}
-      />
-      <button onClick={this.addTodo}>Add Todo</button>
-      <ul>
-        {this.state.todos.map((todo, index) => (
-          <li key={index} style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}>
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() => this.toggleTodoCompletion(index)}
-            />
-            {todo.text}
-          </li>
-        ))}
-      </ul>
-      <button onClick={this.markAllCompleted}>Mark All Completed</button>
-      <button onClick={this.clearCompletedTodos}>Clear Completed Todos</button>
-      <p>Number of active todos: {this.countActiveTodos()}</p>
-    </div>
+        <h1>To Do List</h1>
+        <h2>Active to do : {this.activeToDo()}</h2>
+        <input
+          type="text"
+          value={this.state.newTodo}
+          onChange={this.setNewToDo}
+          placeholder="Add a new To Do"
+        />
+        <button onClick={this.addTodo}>Add A New To Do</button>
+        <ul>
+          {this.state.todos.map((todo, index) => (
+            <li
+              key={index}
+              onClick={() => this.markDone(index)}
+              style={{
+                textDecoration: todo.done ? "line-through" : "none",
+                cursor: "pointer",
+              }}
+            >
+              {todo.content}
+            </li>
+          ))}
+        </ul>
+
+        <button onClick={this.markAllDone}>Mark All Done</button>
+        <button onClick={this.clearDoneToDo}>Clear All Done</button>
+      </div>
     );
   }
 }
 
-export default TodoApp;
+export default Todo;
