@@ -34,7 +34,7 @@ render() {
 If you try to update the state directly then it won't re-render the component.
 
 //Wrong
-this.state.message = "Hello world";
+this.state.message = "Hello world"; 
 Instead 
 use setState() method. It schedules an update to a component's state object. When state changes, the component responds by re-rendering.
 

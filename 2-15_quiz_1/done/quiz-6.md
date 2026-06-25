@@ -14,12 +14,6 @@ using the <p> tag in HTML?
 
 
 
-
-
-
-
-
-
 Answer:
 
 

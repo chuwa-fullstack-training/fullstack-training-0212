@@ -3,14 +3,10 @@
 What happens if you do not use rest parameter as a last argument?
 
 eg :
+
 fn(a, ...b, c) {
 
 }
-
-
-
-
-
 
 
 

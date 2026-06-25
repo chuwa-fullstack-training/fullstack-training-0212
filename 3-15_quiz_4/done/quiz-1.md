@@ -30,7 +30,6 @@
 
 
 
-
 The major features of React are:
 
 Uses JSX syntax, a syntax extension of JS that allows developers to write HTML in their JS code.

@@ -1,10 +1,6 @@
 5. What is the purpose of callback function as an second argument of 
 
-setState(() => {
-
-} , callback)?
-
-
+setState(() => {} , callback);
 
 
 

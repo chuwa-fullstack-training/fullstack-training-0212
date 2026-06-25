@@ -13,12 +13,6 @@ follow up: rank the priority
 
 
 
-
-
-
-
-
-
 Answer:
 
 

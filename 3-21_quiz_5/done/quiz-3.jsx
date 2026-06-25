@@ -1,4 +1,5 @@
-/* Analyze the below code and advise what is wrong with using setState() inside the render() method: */
+/* Analyze the below code and advise what is wrong with using 
+setState() inside the render() method: */
 
 import React, { Component } from "react";
 

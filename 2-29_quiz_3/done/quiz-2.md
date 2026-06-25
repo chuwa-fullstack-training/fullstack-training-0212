@@ -7,4 +7,3 @@ For example:
 concatenate('foo','bar') should return 'foobar'
 
 concatenate('hello','world ') should return 'helloworld'
-

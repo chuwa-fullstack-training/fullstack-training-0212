@@ -8,16 +8,10 @@ obj[o2] = 'o2';
 console.log(obj); // what is this output?
 
 
+
 let o3 = {id: 3};
 obj[o3] = 'o3';
 console.log(obj); // what is this output?
-
-
-
-
-
-
-
 
 
 

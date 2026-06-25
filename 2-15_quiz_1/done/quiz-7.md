@@ -1,10 +1,4 @@
-what is the result of ["1","2","3"].map((parseInt)) ? Why [JS]
-
-
-
-
-
-
+what is the result of ["1","2","3"].map(parseInt) ? Why [JS]
 
 
 

@@ -19,7 +19,6 @@ what is the result of null == undefined and null === undefined ? [JS]
 
 
 
-
 Answer:
 
 
